@@ -1,0 +1,695 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  /* Brand Colors */
+  --color-orchid: #A90DC8;
+  --color-orchid-dark: #8A0AA3;
+  --color-orchid-light: #C820E8;
+  --color-gold: #FDB515;
+  --color-gold-dark: #E09A00;
+  --color-feather: #E7EAE5;
+  --color-frosted: #DFF2FE;
+  --color-snow: #F5FEFD;
+
+  /* Fintech SaaS Theme Colors */
+  --color-fintech-primary: #6D28D9;
+  --color-fintech-dark: #4C1D95;
+  --color-fintech-violet: #8B5CF6;
+  --color-fintech-pink: #EC4899;
+  --color-fintech-indigo: #6366F1;
+  --color-fintech-gray: #F9FAFB;
+  --color-fintech-accent: #A78BFA;
+
+  /* Fonts */
+  --font-sora: 'Sora', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #F5FEFD;
+  color: #1a1a2e;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* Prevent mobile tap highlight */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Better touch target sizes for mobile */
+button, a, [role="button"] {
+  touch-action: manipulation;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F5FEFD;
+}
+::-webkit-scrollbar-thumb {
+  background: #A90DC8;
+  border-radius: 3px;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #A90DC8 0%, #C820E8 50%, #FDB515 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Orchid gradient background */
+.orchid-gradient {
+  background: linear-gradient(135deg, #1a0026 0%, #2d0040 40%, #A90DC8 100%);
+}
+
+/* Gold shimmer animation */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Gentle float — for cards */
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+/* Pulse ring animation */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Pulse glow — for CTA dot indicator */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(253,181,21,0.6); }
+  50% { opacity: 0.6; box-shadow: 0 0 0 6px rgba(253,181,21,0); }
+}
+
+/* Fade up animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Fade in left */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-36px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Fade in right */
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(36px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.86); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Count up animation */
+@keyframes countUp {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Gradient border rotation */
+@keyframes borderRotate {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Orbit rotation for decorative circle */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+}
+
+/* Hero word reveal */
+@keyframes wordReveal {
+  from { opacity: 0; transform: translateY(16px) skewY(2deg); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0) skewY(0); filter: blur(0); }
+}
+
+/* Underline expand */
+@keyframes underlineExpand {
+  from { transform: scaleX(0); transform-origin: left; }
+  to   { transform: scaleX(1); transform-origin: left; }
+}
+
+/* Slide up for stats */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Badge pop */
+@keyframes badgePop {
+  0%  { opacity: 0; transform: scale(0.6) rotate(-6deg); }
+  70% { transform: scale(1.08) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.animate-float      { animation: float 4s ease-in-out infinite; }
+.animate-float-slow { animation: floatSlow 6s ease-in-out infinite; }
+.animate-fadeInUp   { animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) forwards; }
+.animate-fadeInLeft { animation: fadeInLeft 0.7s cubic-bezier(0.4,0,0.2,1) forwards; }
+.animate-fadeRight  { animation: fadeInRight 0.7s cubic-bezier(0.4,0,0.2,1) forwards; }
+.animate-scaleIn    { animation: scaleIn 0.6s cubic-bezier(0.4,0,0.2,1) forwards; }
+.animate-badgePop   { animation: badgePop 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.animate-wordReveal { animation: wordReveal 0.65s cubic-bezier(0.4,0,0.2,1) forwards; }
+.animate-pulseGlow  { animation: pulseGlow 2.4s ease-in-out infinite; }
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #FDB515 25%, #ffe08a 50%, #FDB515 75%);
+  background-size: 200% auto;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Stagger delay helpers */
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-250 { animation-delay: 250ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+
+/* Opacity-0 utility (paired with animation) */
+.opacity-0-init { opacity: 0; }
+
+
+/* WhatsApp floating button */
+.whatsapp-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.whatsapp-fab:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.7);
+}
+
+/* Service card hover */
+.service-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(169, 13, 200, 0.15);
+}
+
+/* Accordion transitions */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out, opacity 0.3s ease;
+  opacity: 0;
+}
+.accordion-content.open {
+  opacity: 1;
+}
+
+/* Button styles */
+.btn-orchid {
+  background: linear-gradient(135deg, #A90DC8, #8A0AA3);
+  color: white;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-family: 'Sora', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+}
+.btn-orchid:hover {
+  background: linear-gradient(135deg, #8A0AA3, #6d0880);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(169, 13, 200, 0.4);
+  color: white;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #FDB515, #E09A00);
+  color: #1a1a2e;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(253, 181, 21, 0.5);
+  color: #1a1a2e;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #A90DC8;
+  padding: 11px 27px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-family: 'Sora', sans-serif;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid #A90DC8;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 15px;
+}
+.btn-outline:hover {
+  background: #A90DC8;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Section headings */
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(169,13,200,0.1), rgba(253,181,21,0.1));
+  border: 1px solid rgba(169,13,200,0.2);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #A90DC8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  font-family: 'Sora', sans-serif;
+}
+
+/* Card styles */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(169, 13, 200, 0.08);
+  border-radius: 20px;
+}
+
+/* Decorative orbit */
+.orbit-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FDB515;
+}
+
+/* Input styles */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #E7EAE5;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  color: #1a1a2e;
+  background: white;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-input:focus {
+  border-color: #A90DC8;
+  box-shadow: 0 0 0 3px rgba(169, 13, 200, 0.1);
+}
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Mobile nav */
+.mobile-nav-open {
+  animation: slideDown 0.3s ease-out;
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Premium Fintech SaaS Style Classes */
+.fintech-mesh-bg {
+  position: relative;
+  background-color: #0b0214;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(109, 40, 217, 0.25) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(99, 102, 241, 0.22) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 90%, rgba(139, 92, 246, 0.18) 0px, transparent 50%);
+}
+
+.fintech-dotted-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.glass-card-fintech {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-fintech:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 25px 45px rgba(109, 40, 217, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-card-glow-purple:hover {
+  box-shadow: 
+    0 0 25px rgba(139, 92, 246, 0.35),
+    0 25px 45px rgba(109, 40, 217, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-card-glow-pink:hover {
+  box-shadow: 
+    0 0 25px rgba(236, 72, 153, 0.35),
+    0 25px 45px rgba(109, 40, 217, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-card-glow-gold:hover {
+  box-shadow: 
+    0 0 25px rgba(253, 181, 21, 0.35),
+    0 25px 45px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-nav {
+  background: rgba(11, 2, 20, 0.65) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Specific floating animations around the headshot */
+@keyframes float-1 {
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) translateX(6px) rotate(1.5deg); }
+}
+
+@keyframes float-2 {
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50% { transform: translateY(10px) translateX(-8px) rotate(-1deg); }
+}
+
+@keyframes float-3 {
+  0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  33% { transform: translateY(-8px) translateX(-6px) rotate(1deg); }
+  66% { transform: translateY(6px) translateX(8px) rotate(-1deg); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-float-1 {
+  animation: float-1 6s ease-in-out infinite;
+}
+
+.animate-float-2 {
+  animation: float-2 7s ease-in-out infinite;
+}
+
+.animate-float-3 {
+  animation: float-3 8.5s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Premium gradient buttons */
+.btn-fintech-primary {
+  background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 50%, #EC4899 100%);
+  background-size: 200% auto;
+  color: white;
+  border: none;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 30px rgba(109, 40, 217, 0.4);
+}
+
+.btn-fintech-primary:hover {
+  background-position: right center;
+  transform: translateY(-3px);
+  box-shadow: 
+    0 0 25px rgba(139, 92, 246, 0.4),
+    0 15px 35px rgba(109, 40, 217, 0.5);
+}
+
+.btn-fintech-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-fintech-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.fintech-gradient-border {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+}
+
+.fintech-gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(139, 92, 246, 0.3) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Hero-specific utility classes (moved out of inline styles to allow MQ overrides) */
+.hero-stats-grid {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* ===================================================
+   GLOBAL RESPONSIVE — Mobile-First Media Queries
+   =================================================== */
+
+/* Tablets + small laptops */
+@media (max-width: 1024px) {
+  /* Bio section grid — About page */
+  .bio-grid {
+    grid-template-columns: 1fr !important;
+    gap: 48px !important;
+  }
+  /* Contact form grid — Contact page */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  /* Role card grid — Careers page */
+  .role-card {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .role-cta-col {
+    border-left: none !important;
+    padding-left: 0 !important;
+    border-top: 1px solid #f3f4f6 !important;
+    padding-top: 20px !important;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 768px) {
+  /* Typography scale-down */
+  h1 { font-size: clamp(26px, 7vw, 40px) !important; }
+  h2 { font-size: clamp(22px, 6vw, 34px) !important; }
+
+  /* Buttons — full width on mobile for CTAs */
+  .btn-orchid,
+  .btn-gold,
+  .btn-outline {
+    font-size: 14px !important;
+    padding: 12px 20px !important;
+  }
+
+  /* Fintech primary/secondary hero buttons */
+  .btn-fintech-primary,
+  .btn-fintech-secondary {
+    font-size: 14px !important;
+    padding: 13px 22px !important;
+  }
+
+  /* Contact form padding reduced */
+  .contact-form-card {
+    padding: 24px 20px !important;
+  }
+  .contact-info-card {
+    padding: 24px 20px !important;
+  }
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Footer cards stack */
+  .footer-contact-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+
+  /* Accordion items */
+  .accordion-btn {
+    padding: 16px 16px !important;
+  }
+  .accordion-content {
+    padding: 0 16px 16px !important;
+  }
+
+  /* Credentials rows wrap on mobile */
+  .credentials-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+  }
+  .credentials-row span:last-child {
+    text-align: left !important;
+  }
+
+  /* Service accordion inner list — single column */
+  .service-item-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Section padding — reduce on mobile */
+  section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  /* Hero stats grid — 2 cols max on tiny screens */
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Prevent text overflow in cards */
+  .glass-card-fintech {
+    word-break: break-word;
+  }
+
+  /* WhatsApp FAB — move up slightly to avoid overlapping bottom nav on some phones */
+  .whatsapp-fab {
+    bottom: 16px !important;
+    right: 16px !important;
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  /* Contact form card — full bleed padding */
+  .contact-grid > div {
+    padding: 20px 16px !important;
+  }
+
+  /* Footer — reduce padding */
+  footer > div {
+    padding: 0 16px !important;
+  }
+}
