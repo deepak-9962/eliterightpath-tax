@@ -72,11 +72,12 @@ function ConnectorLines() {
         {PILLS.map((p, i) => {
           const s = edgePt(p.angleDeg);
           const e = pillSVG(p.angleDeg);
+          const x2Val = s.x === e.x ? e.x + 0.01 : e.x;
           return (
             <linearGradient
               key={`hicg${i}`} id={`hicg${i}`}
               x1={s.x} y1={s.y}
-              x2={e.x} y2={e.y}
+              x2={x2Val} y2={e.y}
               gradientUnits="userSpaceOnUse"
             >
               <stop offset="0%" stopColor={p.lineColor} stopOpacity="0.8" />
