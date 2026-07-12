@@ -216,7 +216,7 @@ export default function HomePage() {
                   Get Free Consultation <ArrowRight size={16} />
                 </Link>
                 <a
-                  href="https://wa.me/919940243827?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
+                  href="https://wa.me/919360044152?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-fintech-secondary fintech-gradient-border"
@@ -576,9 +576,7 @@ export default function HomePage() {
                     zIndex: 10,
                   }}
                 >
-                  <div
-                    className="animate-float-slow"
-                    style={{
+                  <div style={{
                       display: "inline-flex",
                       alignItems: "center",
                       gap: "10px",
@@ -777,13 +775,13 @@ export default function HomePage() {
               Talk to us today. One conversation is all it takes to get your finances on the right path.
             </p>
             <div style={{ display:"flex", gap:"14px", justifyContent:"center", flexWrap:"wrap" }}>
-              <a href="tel:+919940243827"
+              <a href="tel:+919360044152"
                 style={{ display:"inline-flex", alignItems:"center", gap:"8px", padding:"14px 32px", borderRadius:"50px", background:"white", color:"#A90DC8", fontFamily:"Sora, sans-serif", fontWeight:700, fontSize:"15px", textDecoration:"none", boxShadow:"0 8px 30px rgba(0,0,0,0.2)", transition:"all 0.3s ease" }}
                 onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-3px)";e.currentTarget.style.boxShadow="0 14px 40px rgba(0,0,0,0.3)"}}
                 onMouseLeave={e=>{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 8px 30px rgba(0,0,0,0.2)"}}>
-                <Phone size={16} /> +91 99402 43827
+                <Phone size={16} /> +91 93600 44152
               </a>
-              <a href="https://wa.me/919940243827?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/919360044152?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services" target="_blank" rel="noopener noreferrer"
                 style={{ display:"inline-flex", alignItems:"center", gap:"8px", padding:"14px 32px", borderRadius:"50px", background:"#25D366", color:"white", fontFamily:"Sora, sans-serif", fontWeight:700, fontSize:"15px", textDecoration:"none", boxShadow:"0 8px 30px rgba(37,211,102,0.4)", transition:"all 0.3s ease" }}
                 onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-3px)";e.currentTarget.style.boxShadow="0 14px 40px rgba(37,211,102,0.6)"}}
                 onMouseLeave={e=>{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 8px 30px rgba(37,211,102,0.4)"}}>

@@ -201,7 +201,7 @@ export default function CareersPage() {
                       <Mail size={15} /> Apply via Email
                     </button>
                     <a
-                      href={`https://wa.me/919940243827?text=Hi%20Mr.%20Raj,%20I%20am%20interested%20in%20applying%20for%20the%20${encodeURIComponent(role.title)}%20internship.%20Here%20is%20my%20resume:`}
+                      href={`https://wa.me/919360044152?text=Hi%20Mr.%20Raj,%20I%20am%20interested%20in%20applying%20for%20the%20${encodeURIComponent(role.title)}%20internship.%20Here%20is%20my%20resume:`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-gold"
@@ -311,7 +311,7 @@ export default function CareersPage() {
                   <Send size={15} /> Send Resume
                 </a>
                 <a
-                  href="https://wa.me/919940243827?text=Hi%20Mr.%20Raj,%20I'm%20interested%20in%20the%20internship%20opportunities%20at%20Elite%20Right%20Path."
+                  href="https://wa.me/919360044152?text=Hi%20Mr.%20Raj,%20I'm%20interested%20in%20the%20internship%20opportunities%20at%20Elite%20Right%20Path."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-outline"

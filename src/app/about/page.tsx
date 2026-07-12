@@ -199,9 +199,9 @@ export default function AboutPage() {
               >
                 {[
                   { label: "GST Registration No.", value: "33GAGPR3616R1Z2" },
-                  { label: "Phone & WhatsApp", value: "+91 99402 43827" },
+                  { label: "Phone & WhatsApp", value: "+91 93600 44152" },
                   { label: "Service Area", value: "Tamil Nadu & Pan India (Online)" },
-                  { label: "Business Hours", value: "Mon – Sat: 9:00 AM – 6:00 PM" },
+                  { label: "Business Hours", value: "Mon – Sat: 10:00 AM – 8:00 PM" },
                 ].map(({ label, value }) => (
                   <div key={label} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: "14px" }} className="credentials-row">
                     <span style={{ color: "#6b7280", fontWeight: 500 }}>{label}</span>
@@ -214,7 +214,7 @@ export default function AboutPage() {
                 <Link href="/contact" className="btn-orchid" style={{ textDecoration: "none" }}>
                   Get in Touch <ArrowRight size={16} />
                 </Link>
-                <a href="tel:+919940243827" className="btn-outline" style={{ textDecoration: "none" }}>
+                <a href="tel:+919360044152" className="btn-outline" style={{ textDecoration: "none" }}>
                   <Phone size={14} /> Call Now
                 </a>
               </div>
@@ -318,7 +318,7 @@ export default function AboutPage() {
               Book a Free Consultation <ArrowRight size={16} />
             </Link>
             <a
-              href="https://wa.me/919940243827?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
+              href="https://wa.me/919360044152?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-gold"

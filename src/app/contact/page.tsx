@@ -315,7 +315,7 @@ export default function ContactPage() {
               </h3>
               <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                 <a
-                  href="tel:+919940243827"
+                  href="tel:+919360044152"
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -353,13 +353,13 @@ export default function ContactPage() {
                   <div>
                     <div style={{ fontSize: "12px", color: "#9ca3af", fontWeight: 500, marginBottom: "2px" }}>Call Us</div>
                     <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: "16px", color: "#1a1a2e" }}>
-                      +91 99402 43827
+                      +91 93600 44152
                     </div>
                   </div>
                 </a>
 
                 <a
-                  href="https://wa.me/919940243827?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
+                  href="https://wa.me/919360044152?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -399,7 +399,7 @@ export default function ContactPage() {
                   <div>
                     <div style={{ fontSize: "12px", color: "#9ca3af", fontWeight: 500, marginBottom: "2px" }}>WhatsApp Us</div>
                     <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: "16px", color: "#1a1a2e" }}>
-                      +91 99402 43827
+                      +91 93600 44152
                     </div>
                   </div>
                 </a>
@@ -438,7 +438,7 @@ export default function ContactPage() {
                     </div>
                     <div style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
                       Monday – Saturday<br />
-                      9:00 AM – 6:00 PM<br />
+                      10:00 AM – 8:00 PM<br />
                       <span style={{ color: "#EF4444", fontSize: "13px" }}>Sunday: Closed</span>
                     </div>
                   </div>

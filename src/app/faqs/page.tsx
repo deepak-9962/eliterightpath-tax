@@ -250,11 +250,11 @@ export default function FAQsPage() {
             Still Have Questions?
           </h2>
           <p style={{ fontSize: "16px", color: "#6b7280", lineHeight: 1.7, marginBottom: "28px" }}>
-            Our team is available Mon–Sat, 9 AM to 6 PM. Reach out and we'll answer every question in plain, jargon-free language.
+            Our team is available Mon–Sat, 10 AM to 8 PM. Reach out and we'll answer every question in plain, jargon-free language.
           </p>
           <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
             <a
-              href="https://wa.me/919940243827?text=Hi%2C%20I%20have%20a%20tax%20question%20for%20you"
+              href="https://wa.me/919360044152?text=Hi%2C%20I%20have%20a%20tax%20question%20for%20you"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-orchid"
@@ -262,7 +262,7 @@ export default function FAQsPage() {
             >
               <MessageCircle size={14} /> Ask on WhatsApp
             </a>
-            <a href="tel:+919940243827" className="btn-outline" style={{ textDecoration: "none" }}>
+            <a href="tel:+919360044152" className="btn-outline" style={{ textDecoration: "none" }}>
               <Phone size={14} /> Call Us
             </a>
           </div>

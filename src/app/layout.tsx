@@ -66,7 +66,7 @@ export default function RootLayout({
               description:
                 "Expert income tax, GST, accounting and business registration services guided by Mr. Raj Paudel S.",
               url: "https://eliterightpath.com",
-              telephone: "+919940243827",
+              telephone: "+919360044152",
               address: {
                 "@type": "PostalAddress",
                 addressCountry: "IN",

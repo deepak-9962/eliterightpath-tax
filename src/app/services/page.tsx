@@ -309,7 +309,7 @@ function ServiceAccordion({
                 Need help with {service.title.toLowerCase()}?
               </span>
               <a
-                href="https://wa.me/919940243827?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
+                href="https://wa.me/919360044152?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -440,7 +440,7 @@ export default function ServicesPage() {
         </p>
         <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
           <a
-            href="tel:+919940243827"
+            href="tel:+919360044152"
             style={{
               display: "inline-flex",
               alignItems: "center",
