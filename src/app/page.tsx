@@ -466,53 +466,299 @@ export default function HomePage() {
       </section>
 
       {/* ─── ABOUT TEASER ─── */}
-      <section style={{ background:"white", padding:"80px 0" }}>
-        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"0 24px" }}>
-          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"60px", alignItems:"center" }} className="about-grid">
+      <section
+        style={{
+          background: "#F9F7FF",
+          padding: "100px 0",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Dot-grid background pattern — light gray dots on off-white, ties back to hero */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "radial-gradient(circle, rgba(139,92,246,0.12) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Soft blurred gradient blob behind the photo card */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            top: "10%",
+            left: "-8%",
+            width: "500px",
+            height: "500px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(168,85,247,0.18) 0%, rgba(236,72,153,0.08) 50%, transparent 75%)",
+            filter: "blur(72px)",
+            pointerEvents: "none",
+          }}
+        />
+
+        <div
+          style={{
+            maxWidth: "1280px",
+            margin: "0 auto",
+            padding: "0 24px",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          {/* ── Grid: photo left (slightly wider), text right (starts earlier via negative margin) ── */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1.05fr 1fr",
+              gap: "40px",
+              alignItems: "center",
+            }}
+            className="about-grid"
+          >
+            {/* LEFT: Photo card */}
             <Animated variant="fadeLeft">
-              <div style={{ position:"relative" }}>
-                <div style={{ borderRadius:"24px", overflow:"hidden", height:"400px", border:"3px solid rgba(169,13,200,0.15)", boxShadow:"0 20px 60px rgba(169,13,200,0.15)", position:"relative", transition:"transform 0.5s ease, box-shadow 0.5s ease" }}
-                  onMouseEnter={e=>{e.currentTarget.style.transform="scale(1.02)";e.currentTarget.style.boxShadow="0 30px 80px rgba(169,13,200,0.25)"}}
-                  onMouseLeave={e=>{e.currentTarget.style.transform="scale(1)";e.currentTarget.style.boxShadow="0 20px 60px rgba(169,13,200,0.15)"}}>
-                  <Image src="/client.png" alt="Mr. Raj Paudel S. — Proprietor" fill style={{ objectFit:"contain", backgroundColor: "#ffffff" }} />
+              <div style={{ position: "relative" }}>
+
+                {/* Gradient border wrapper — creates the thin purple/pink border effect */}
+                <div
+                  style={{
+                    padding: "3px",
+                    borderRadius: "28px",
+                    background: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #6366F1 100%)",
+                    boxShadow: "0 0 60px 10px rgba(168,85,247,0.18), 0 20px 60px rgba(0,0,0,0.08)",
+                    /* Slight editorial overlap into the text column */
+                    marginRight: "-28px",
+                    position: "relative",
+                    zIndex: 2,
+                  }}
+                >
+                  {/* Inner card — off-white, not pure white */}
+                  <div
+                    style={{
+                      borderRadius: "26px",
+                      overflow: "hidden",
+                      height: "440px",
+                      background: "#FAFAFA",
+                      position: "relative",
+                      transition: "transform 0.5s ease, box-shadow 0.5s ease",
+                    }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.transform = "scale(1.02)";
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.transform = "scale(1)";
+                    }}
+                  >
+                    <Image
+                      src="/client.png"
+                      alt="Mr. Raj Paudel S. — Proprietor, Elite Right Path Tax Consultancy"
+                      fill
+                      style={{ objectFit: "contain", backgroundColor: "#FAFAFA" }}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  </div>
                 </div>
-                {/* Animated badge */}
-                <div className="animate-float-slow" style={{ position:"absolute", bottom:"-16px", right:"-16px", background:"linear-gradient(135deg, #A90DC8, #8A0AA3)", borderRadius:"20px", padding:"20px 24px", boxShadow:"0 12px 40px rgba(169,13,200,0.4)", textAlign:"center", animationDelay:"1s" }}>
-                  <div style={{ fontFamily:"Sora, sans-serif", fontWeight:800, fontSize:"32px", color:"#FDB515" }}>GST</div>
-                  <div style={{ fontSize:"12px", color:"rgba(255,255,255,0.8)", fontWeight:600 }}>Registered</div>
-                </div>
+
+                {/* Floating GST credential chip — overlaps bottom-right corner of photo card */}
+                <Animated
+                  variant="fadeUp"
+                  delay={400}
+                  style={{
+                    position: "absolute",
+                    bottom: "-18px",
+                    right: "0px",
+                    zIndex: 10,
+                  }}
+                >
+                  <div
+                    className="animate-float-slow"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      background: "white",
+                      border: "1.5px solid rgba(139,92,246,0.25)",
+                      borderRadius: "16px",
+                      padding: "12px 18px",
+                      boxShadow: "0 8px 32px rgba(139,92,246,0.18), 0 2px 8px rgba(0,0,0,0.06)",
+                    }}
+                  >
+                    {/* Gradient icon chip */}
+                    <div
+                      style={{
+                        width: "40px",
+                        height: "40px",
+                        borderRadius: "10px",
+                        background: "linear-gradient(135deg, #8B5CF6, #EC4899)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        boxShadow: "0 4px 14px rgba(139,92,246,0.35)",
+                      }}
+                    >
+                      <CheckCircle size={20} color="white" />
+                    </div>
+                    <div>
+                      <div
+                        style={{
+                          fontFamily: "Sora, sans-serif",
+                          fontWeight: 800,
+                          fontSize: "15px",
+                          background: "linear-gradient(135deg, #8B5CF6, #EC4899)",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                          backgroundClip: "text",
+                          lineHeight: 1.2,
+                        }}
+                      >
+                        GST Registered
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "11px",
+                          color: "#9CA3AF",
+                          fontWeight: 500,
+                          marginTop: "2px",
+                        }}
+                      >
+                        Verified Firm
+                      </div>
+                    </div>
+                  </div>
+                </Animated>
               </div>
             </Animated>
 
-            <Animated variant="fadeRight">
-              <div>
-                <div className="section-tag" style={{ marginBottom:"20px" }}>About Us</div>
-                <h2 style={{ fontFamily:"Sora, sans-serif", fontWeight:800, fontSize:"clamp(26px, 3.5vw, 40px)", color:"#1a1a2e", lineHeight:1.2, marginBottom:"20px" }}>
+            {/* RIGHT: Text column — slight left pull via padding to meet photo overlap */}
+            <div style={{ paddingLeft: "12px", paddingBottom: "24px" }}>
+
+              {/* ABOUT US tag */}
+              <Animated variant="fadeUp" delay={100}>
+                <div className="section-tag" style={{ marginBottom: "20px" }}>About Us</div>
+              </Animated>
+
+              {/* Two-tone headline */}
+              <Animated variant="fadeUp" delay={200}>
+                <h2
+                  style={{
+                    fontFamily: "Sora, sans-serif",
+                    fontWeight: 800,
+                    fontSize: "clamp(26px, 3.5vw, 40px)",
+                    color: "#111827",
+                    lineHeight: 1.2,
+                    marginBottom: "20px",
+                  }}
+                >
                   Mr. Raj Paudel S. —{" "}
-                  <span style={{ color:"#A90DC8" }}>Your Trusted Tax Advisor</span>
+                  <span
+                    style={{
+                      background: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #6366F1 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
+                  >
+                    Your Trusted Tax Advisor
+                  </span>
                 </h2>
-                <p style={{ fontSize:"16px", color:"#4b5563", lineHeight:1.8, marginBottom:"16px" }}>
+              </Animated>
+
+              {/* Paragraph 1 */}
+              <Animated variant="fadeUp" delay={280}>
+                <p style={{ fontSize: "16px", color: "#4b5563", lineHeight: 1.8, marginBottom: "16px" }}>
                   Elite Right Path Tax Consultancy is a professional tax and compliance firm led by Mr. Raj Paudel S., dedicated to making financial compliance simple, accurate, and stress-free.
                 </p>
-                <p style={{ fontSize:"16px", color:"#4b5563", lineHeight:1.8, marginBottom:"28px" }}>
+              </Animated>
+
+              {/* Paragraph 2 */}
+              <Animated variant="fadeUp" delay={340}>
+                <p style={{ fontSize: "16px", color: "#4b5563", lineHeight: 1.8, marginBottom: "28px" }}>
                   With expertise spanning income tax, GST, business registrations, and full-spectrum accounting, we guide you with precision, transparency, and genuine care.
                 </p>
-                <div style={{ display:"flex", flexDirection:"column", gap:"10px", marginBottom:"32px" }}>
-                  {["Precision in every filing, every time", "Transparent pricing — no hidden charges", "Personalized attention from your consultant"].map((point, i) => (
-                    <div key={point} style={{ display:"flex", alignItems:"center", gap:"10px", opacity:0, animation:"fadeInUp 0.6s ease forwards", animationDelay:`${i*120}ms` }} className="opacity-0-init">
-                      <CheckCircle size={18} color="#A90DC8" style={{ flexShrink:0, transition:"transform 0.3s ease" }} />
-                      <span style={{ fontSize:"15px", color:"#374151", fontWeight:500 }}>{point}</span>
+              </Animated>
+
+              {/* Checklist rows — individual horizontal cards with stagger */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "36px" }}>
+                {[
+                  { text: "Precision in every filing, every time",        color: "#8B5CF6" },
+                  { text: "Transparent pricing — no hidden charges",       color: "#EC4899" },
+                  { text: "Personalized attention from your consultant",   color: "#6366F1" },
+                ].map((point, i) => (
+                  <Animated key={point.text} variant="fadeUp" delay={420 + i * 120}>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "14px",
+                        background: "white",
+                        border: "1px solid rgba(139,92,246,0.12)",
+                        borderRadius: "14px",
+                        padding: "14px 18px",
+                        boxShadow: "0 2px 12px rgba(139,92,246,0.06)",
+                        transition: "transform 0.25s ease, box-shadow 0.25s ease",
+                      }}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.transform = "translateX(4px)";
+                        e.currentTarget.style.boxShadow = "0 4px 20px rgba(139,92,246,0.14)";
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.transform = "translateX(0)";
+                        e.currentTarget.style.boxShadow = "0 2px 12px rgba(139,92,246,0.06)";
+                      }}
+                    >
+                      {/* Circular gradient icon chip */}
+                      <div
+                        style={{
+                          width: "32px",
+                          height: "32px",
+                          borderRadius: "50%",
+                          background: `linear-gradient(135deg, ${point.color}, ${point.color === "#8B5CF6" ? "#6366F1" : point.color === "#EC4899" ? "#8B5CF6" : "#EC4899"})`,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          flexShrink: 0,
+                          boxShadow: `0 4px 12px ${point.color}40`,
+                        }}
+                      >
+                        <CheckCircle size={15} color="white" />
+                      </div>
+                      <span style={{ fontSize: "15px", color: "#374151", fontWeight: 500 }}>
+                        {point.text}
+                      </span>
                     </div>
-                  ))}
-                </div>
-                <Link href="/about" className="btn-orchid" style={{ textDecoration:"none" }}>
+                  </Animated>
+                ))}
+              </div>
+
+              <Animated variant="fadeUp" delay={780}>
+                <Link href="/about" className="btn-orchid" style={{ textDecoration: "none" }}>
                   Read More About Us <ArrowRight size={16} />
                 </Link>
-              </div>
-            </Animated>
+              </Animated>
+            </div>
           </div>
         </div>
-        <style>{`@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr !important; } }`}</style>
+
+        {/* Photography note: displayed only in dev to flag content need */}
+        <style>{`
+          @media (max-width: 1024px) {
+            .about-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+            .about-grid > *:first-child > div { margin-right: 0 !important; }
+          }
+          @media (max-width: 768px) {
+            .about-grid > *:first-child > div > div:first-child { height: 320px !important; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .animate-float-slow { animation: none !important; }
+          }
+        `}</style>
       </section>
 
       {/* ─── CTA BANNER ─── */}
