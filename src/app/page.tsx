@@ -22,7 +22,7 @@ const serviceCategories = [
 ];
 
 const whyChooseUs = [
-  { icon: Award,      title: "Expert Guidance",        desc: "Led by Mr. Raj Paudel S., a seasoned tax professional with deep expertise in Indian tax law.",       color: "#A90DC8" },
+  { icon: Award,      title: "Expert Guidance",        desc: "Led by Mr. Raj Paudel, a seasoned tax professional with deep expertise in Indian tax law.",       color: "#A90DC8" },
   { icon: Clock,      title: "Timely Filing",          desc: "We track all deadlines proactively — no last-minute rush, no penalties for our clients.",            color: "#FDB515" },
   { icon: Users,      title: "Personalized Service",   desc: "Direct access to your consultant — not a ticket queue. Your concerns get individual attention.",      color: "#A90DC8" },
   { icon: ShieldCheck,title: "Full Transparency",      desc: "Clear pricing, no hidden charges. You always know what we're doing and why.",                         color: "#FDB515" },
@@ -557,7 +557,7 @@ export default function HomePage() {
                   >
                     <Image
                       src="/client.png"
-                      alt="Mr. Raj Paudel S. — Proprietor, Elite Right Path Tax Consultancy"
+                      alt="Mr. Raj Paudel — Proprietor, Elite Right Path Tax Consultancy"
                       fill
                       style={{ objectFit: "contain", backgroundColor: "#FAFAFA" }}
                       sizes="(max-width: 768px) 100vw, 50vw"
@@ -654,7 +654,7 @@ export default function HomePage() {
                     marginBottom: "20px",
                   }}
                 >
-                  Mr. Raj Paudel S. —{" "}
+                  Mr. Raj Paudel —{" "}
                   <span
                     style={{
                       background: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #6366F1 100%)",
@@ -671,7 +671,7 @@ export default function HomePage() {
               {/* Paragraph 1 */}
               <Animated variant="fadeUp" delay={280}>
                 <p style={{ fontSize: "16px", color: "#4b5563", lineHeight: 1.8, marginBottom: "16px" }}>
-                  Elite Right Path Tax Consultancy is a professional tax and compliance firm led by Mr. Raj Paudel S., dedicated to making financial compliance simple, accurate, and stress-free.
+                  Elite Right Path Tax Consultancy is a professional tax and compliance firm led by Mr. Raj Paudel, dedicated to making financial compliance simple, accurate, and stress-free.
                 </p>
               </Animated>
 

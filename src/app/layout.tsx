@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Elite Right Path Tax Consultancy",
   },
   description:
-    "Expert income tax, GST, accounting, and business registration services in Tamil Nadu. Guided by Mr. Raj Paudel S. — Guiding you on the right path to financial compliance and growth.",
+    "Expert income tax, GST, accounting, and business registration services in Tamil Nadu. Guided by Mr. Raj Paudel — Guiding you on the right path to financial compliance and growth.",
   keywords: [
     "tax consultancy",
     "GST filing",
@@ -64,7 +64,7 @@ export default function RootLayout({
               "@type": ["AccountingService", "LocalBusiness"],
               name: "Elite Right Path Tax Consultancy",
               description:
-                "Expert income tax, GST, accounting and business registration services guided by Mr. Raj Paudel S.",
+                "Expert income tax, GST, accounting and business registration services guided by Mr. Raj Paudel",
               url: "https://eliterightpath.com",
               telephone: "+919360044152",
               address: {
@@ -75,7 +75,7 @@ export default function RootLayout({
               vatID: "33GAGPR3616R1Z2",
               founder: {
                 "@type": "Person",
-                name: "Raj Paudel S.",
+                name: "Raj Paudel",
               },
               openingHours: "Mo-Sa 09:00-18:00",
               priceRange: "₹₹",

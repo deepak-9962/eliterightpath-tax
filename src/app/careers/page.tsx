@@ -41,7 +41,7 @@ const benefits = [
   {
     icon: Users,
     title: "Direct Mentorship",
-    desc: "Get trained directly by Mr. Raj Paudel S., learning practical workflow hacks and compliance rules that aren't taught in college classrooms.",
+    desc: "Get trained directly by Mr. Raj Paudel, learning practical workflow hacks and compliance rules that aren't taught in college classrooms.",
     color: "#FDB515",
   },
   {

@@ -372,7 +372,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Elite Right Path Tax Consultancy. All rights reserved.
           </p>
           <p style={{ fontSize: "13px", color: "rgba(255,255,255,0.4)" }}>
-            Proprietor: <span style={{ color: "rgba(255,255,255,0.7)", fontWeight: 600 }}>Mr. Raj Paudel S.</span>
+            Proprietor: <span style={{ color: "rgba(255,255,255,0.7)", fontWeight: 600 }}>Mr. Raj Paudel</span>
           </p>
         </div>
       </div>

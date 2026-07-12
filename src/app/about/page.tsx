@@ -121,7 +121,7 @@ export default function AboutPage() {
               >
                 <Image
                   src="/client.png"
-                  alt="Mr. Raj Paudel S. — Proprietor, Elite Right Path Tax Consultancy"
+                  alt="Mr. Raj Paudel — Proprietor, Elite Right Path Tax Consultancy"
                   fill
                   style={{ objectFit: "contain", backgroundColor: "#ffffff" }}
                 />
@@ -152,7 +152,7 @@ export default function AboutPage() {
                 }}
               >
                 <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: "18px", color: "white" }}>
-                  Mr. Raj Paudel S.
+                  Mr. Raj Paudel
                 </div>
                 <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.8)", marginTop: "4px" }}>
                   Proprietor & Tax Consultant
@@ -181,7 +181,7 @@ export default function AboutPage() {
               </h2>
 
               <p style={{ fontSize: "16px", color: "#4b5563", lineHeight: 1.8, marginBottom: "24px" }}>
-                Elite Right Path was founded by Mr. Raj Paudel S. with a clear mission: to demystify complex tax regulations and provide seamless financial solutions for businesses and individuals alike. Based in Tamil Nadu, we bridge the gap between regulatory mandates and business success.
+                 Elite Right Path was founded by Mr. Raj Paudel with a clear mission: to demystify complex tax regulations and provide seamless financial solutions for businesses and individuals alike. Based in Tamil Nadu, we bridge the gap between regulatory mandates and business success.
               </p>
               
               {/* Credentials list */}
