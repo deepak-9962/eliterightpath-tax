@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-// Force redeploy after root directory update
+// Force redeploy after root directory & Next.js preset updates
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
