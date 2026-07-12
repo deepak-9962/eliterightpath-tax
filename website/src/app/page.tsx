@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import Animated from "@/components/Animated";
 import CountUp from "@/components/CountUp";
+import HeroIconCluster from "@/components/HeroIconCluster";
 
 const serviceCategories = [
   { icon: FileText,   title: "Income Tax Services",      desc: "ITR filing for individuals, businesses, TDS, advance tax planning, and notice handling.",             anchor: "income-tax",          color: "#A90DC8" },
@@ -337,172 +338,33 @@ export default function HomePage() {
             </Animated>
           </div>
 
-          {/* Right Column: Consultant portrait with mask-fade + glow treatment, 4 service badges */}
-          <div
-            style={{
-              position: "relative",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              height: "520px",
-            }}
-            className="hero-right"
-          >
-            {/* === Deep purple–pink glow orb BEHIND the photo === */}
+          {/* Right Column: Animated floating icon cluster */}
+          <Animated variant="scaleIn" delay={300}>
             <div
+              className="hero-right"
               style={{
-                position: "absolute",
-                width: "420px",
-                height: "420px",
-                borderRadius: "50%",
-                background: "radial-gradient(ellipse at center, rgba(139,92,246,0.35) 0%, rgba(236,72,153,0.18) 45%, transparent 75%)",
-                filter: "blur(56px)",
-                zIndex: 0,
-                pointerEvents: "none",
-                transform: "translateY(20px)",
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                minHeight: "480px",
               }}
-            />
-
-            {/* === Portrait frame: borderless, mask-faded into the dark bg === */}
-            <Animated variant="scaleIn" delay={300}>
-              <div
-                style={{
-                  width: "300px",
-                  height: "380px",
-                  position: "relative",
-                  zIndex: 2,
-                }}
-              >
-                {/* Thin gradient ring – subtle, not a harsh white box */}
-                <div
-                  style={{
-                    position: "absolute",
-                    inset: "-1px",
-                    borderRadius: "28px",
-                    background: "linear-gradient(135deg, rgba(139,92,246,0.35) 0%, rgba(236,72,153,0.2) 50%, rgba(99,102,241,0.2) 100%)",
-                    zIndex: 1,
-                    pointerEvents: "none",
-                  }}
-                />
-                {/* The image with mask-fade so edges dissolve into the dark bg */}
-                <div
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: "28px",
-                    overflow: "hidden",
-                    position: "relative",
-                    /* fade bottom hard, fade sides softly */
-                    maskImage:
-                      "linear-gradient(to bottom, black 60%, transparent 100%), radial-gradient(ellipse 80% 100% at 50% 50%, black 55%, transparent 100%)",
-                    WebkitMaskImage:
-                      "linear-gradient(to bottom, black 60%, transparent 100%), radial-gradient(ellipse 80% 100% at 50% 50%, black 55%, transparent 100%)",
-                    maskComposite: "intersect",
-                    WebkitMaskComposite: "source-in",
-                    background: "transparent",
-                  }}
-                >
-                  <Image
-                    src="/client.png"
-                    alt="Mr. Raj Paudel S. — Proprietor, Elite Right Path Tax Consultancy"
-                    fill
-                    style={{
-                      objectFit: "cover",
-                      objectPosition: "center top",
-                    }}
-                    priority
-                  />
-                </div>
-              </div>
-            </Animated>
-
-            {/* === 4 Service badge pills: evenly spaced in a ring around the portrait === */}
-            <div className="desktop-floating-cards" style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 3 }}>
-
-              {/* TOP-LEFT — GST Registration */}
-              <div
-                className="glass-card-fintech glass-card-glow-purple fintech-gradient-border animate-float-1"
-                style={{ position: "absolute", top: "40px", left: "-10px", padding: "10px 16px", borderRadius: "18px", display: "flex", alignItems: "center", gap: "8px", pointerEvents: "auto", whiteSpace: "nowrap" }}
-              >
-                <Receipt size={14} color="#8B5CF6" />
-                <span style={{ fontSize: "12.5px", color: "white", fontWeight: 600 }}>GST Registration</span>
-              </div>
-
-              {/* TOP-RIGHT — Income Tax Filing */}
-              <div
-                className="glass-card-fintech glass-card-glow-pink fintech-gradient-border animate-float-2"
-                style={{ position: "absolute", top: "40px", right: "-10px", padding: "10px 16px", borderRadius: "18px", display: "flex", alignItems: "center", gap: "8px", pointerEvents: "auto", whiteSpace: "nowrap" }}
-              >
-                <FileText size={14} color="#EC4899" />
-                <span style={{ fontSize: "12.5px", color: "white", fontWeight: 600 }}>Income Tax Filing</span>
-              </div>
-
-              {/* BOTTOM-LEFT — MSME Registration */}
-              <div
-                className="glass-card-fintech glass-card-glow-purple fintech-gradient-border animate-float-3"
-                style={{ position: "absolute", bottom: "70px", left: "-10px", padding: "10px 16px", borderRadius: "18px", display: "flex", alignItems: "center", gap: "8px", pointerEvents: "auto", whiteSpace: "nowrap" }}
-              >
-                <Briefcase size={14} color="#8B5CF6" />
-                <span style={{ fontSize: "12.5px", color: "white", fontWeight: 600 }}>MSME Registration</span>
-              </div>
-
-              {/* BOTTOM-RIGHT — Company Registration */}
-              <div
-                className="glass-card-fintech glass-card-glow-purple fintech-gradient-border animate-float-2"
-                style={{ position: "absolute", bottom: "70px", right: "-10px", padding: "10px 16px", borderRadius: "18px", display: "flex", alignItems: "center", gap: "8px", pointerEvents: "auto", whiteSpace: "nowrap" }}
-              >
-                <Building2 size={14} color="#6366F1" />
-                <span style={{ fontSize: "12.5px", color: "white", fontWeight: 600 }}>Company Reg.</span>
-              </div>
+            >
+              <HeroIconCluster />
             </div>
-
-            {/* Mobile wrapped tag list (shows only on mobile/tablet below the portrait) */}
-            <div className="mobile-tag-list" style={{ display: "none" }}>
-              <div className="mobile-flex-wrap">
-                {[
-                  { text: "GST Registration",  icon: Receipt,   col: "#8B5CF6" },
-                  { text: "Income Tax Filing", icon: FileText,  col: "#EC4899" },
-                  { text: "Company Reg.",      icon: Building2, col: "#6366F1" },
-                  { text: "MSME Registration", icon: Briefcase, col: "#8B5CF6" },
-                ].map(({ text, icon: Icon, col }) => (
-                  <div
-                    key={text}
-                    className="glass-card-fintech fintech-gradient-border"
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "6px",
-                      padding: "8px 12px",
-                      borderRadius: "12px",
-                      fontSize: "11px",
-                      color: "white",
-                      fontWeight: 600,
-                      margin: "4px",
-                    }}
-                  >
-                    <Icon size={12} color={col} />
-                    <span>{text}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          </Animated>
         </div>
 
         <style>{`
           @media (max-width: 1024px) {
             .hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; text-align: center; }
             .hero-right { order: -1; height: auto !important; margin-bottom: 8px; }
-            .desktop-floating-cards { display: none !important; }
-            .mobile-tag-list { display: block !important; width: 100%; margin-top: 16px; }
-            .mobile-flex-wrap { display: flex; flex-wrap: wrap; justify-content: center; }
             .hero-cta-row { justify-content: center; }
           }
           @media (max-width: 768px) {
             .hero-section { padding-top: 90px !important; padding-bottom: 60px !important; }
-            .hero-right { min-height: 260px; }
-            .hero-right > div:nth-child(2) > div { width: 220px !important; height: 280px !important; }
+            .hero-right { min-height: 200px; }
             .hero-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
             .hero-cta-row { flex-direction: column; align-items: center; }
             .hero-cta-row > * { width: 100%; max-width: 300px; justify-content: center; text-align: center; }

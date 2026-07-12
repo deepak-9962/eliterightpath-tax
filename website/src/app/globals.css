@@ -247,16 +247,11 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 20px 60px rgba(169, 13, 200, 0.15);
 }
 
-/* Accordion transitions */
+/* Accordion transitions — height controlled by grid-template-rows on parent */
 .accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out, opacity 0.3s ease;
-  opacity: 0;
+  /* Content is always visible; parent wrapper's overflow:hidden + grid-template-rows handles clipping */
 }
-.accordion-content.open {
-  opacity: 1;
-}
+
 
 /* Button styles */
 .btn-orchid {
