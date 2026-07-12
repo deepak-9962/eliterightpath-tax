@@ -33,7 +33,7 @@ const trustStats = [
   { value: 500, suffix: "+", label: "Returns Filed",       icon: FileText },
   { value: 100, suffix: "%", label: "Client Satisfaction", icon: Star },
   { value: 7,   suffix: "",  label: "Service Categories",  icon: Briefcase },
-  { isGst: true,             label: "GST Registered Firm", icon: CheckCircle },
+  { isGst: true,             label: "GSTIN Registered Firm", icon: CheckCircle },
 ];
 
 export default function HomePage() {
@@ -324,7 +324,7 @@ export default function HomePage() {
                   { text: "Personalized Service", icon: Users },
                   { text: "100% Transparent", icon: ShieldCheck },
                   { text: "Deadline First", icon: Clock },
-                  { text: "GST Registered", icon: CheckCircle },
+                  { text: "GSTIN Registered", icon: CheckCircle },
                   { text: "Secure Documentation", icon: FileText },
                 ].map(({ text, icon: Icon }) => (
                   <div key={text} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
@@ -616,7 +616,7 @@ export default function HomePage() {
                           lineHeight: 1.2,
                         }}
                       >
-                        GST Registered
+                        GSTIN
                       </div>
                       <div
                         style={{

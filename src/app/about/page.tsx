@@ -198,7 +198,7 @@ export default function AboutPage() {
                 }}
               >
                 {[
-                  { label: "GST Registration No.", value: "33GAGPR3616R1Z2" },
+                  { label: "GSTIN", value: "33GAGPR3616R1Z2" },
                   { label: "Phone & WhatsApp", value: "+91 93600 44152" },
                   { label: "Service Area", value: "Tamil Nadu & Pan India (Online)" },
                   { label: "Business Hours", value: "Mon – Sat: 10:00 AM – 8:00 PM" },

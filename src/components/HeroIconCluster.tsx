@@ -42,7 +42,7 @@ function pillSVG(deg: number) {
 
 /* ─── Pill data ───────────────────────────────────────────── */
 const PILLS = [
-  { label: "GST Registration",  Icon: Receipt,    color: "#8B5CF6", lineColor: "#8B5CF6", angleDeg:   0, delay: 0,   floatClass: "hic-float-0", href: "/services#gst" },
+  { label: "GSTIN Registration",  Icon: Receipt,    color: "#8B5CF6", lineColor: "#8B5CF6", angleDeg:   0, delay: 0,   floatClass: "hic-float-0", href: "/services#gst" },
   { label: "Income Tax Filing", Icon: FileText,   color: "#EC4899", lineColor: "#EC4899", angleDeg:  60, delay: 0.5, floatClass: "hic-float-1", href: "/services#income-tax" },
   { label: "Company Reg.",      Icon: Building2,  color: "#6366F1", lineColor: "#6366F1", angleDeg: 120, delay: 1.0, floatClass: "hic-float-2", href: "/services#business-registration" },
   { label: "MSME Registration", Icon: Briefcase,  color: "#8B5CF6", lineColor: "#8B5CF6", angleDeg: 180, delay: 1.5, floatClass: "hic-float-3", href: "/services#business-registration" },
