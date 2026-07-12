@@ -101,19 +101,18 @@ function ConnectorLines() {
         const e = pillSVG(p.angleDeg);
         return (
           <g key={`hicl${i}`}>
-            {/* Static dashed base line — starts at circle edge */}
+            {/* Solid colored base line — always visible, no dashes */}
             <line
               x1={s.x} y1={s.y} x2={e.x} y2={e.y}
               stroke={p.lineColor}
-              strokeWidth="0.3"
-              strokeOpacity="0.3"
-              strokeDasharray="1.5 1.5"
+              strokeWidth="0.6"
+              strokeOpacity="0.55"
             />
-            {/* Animated pulse overlay */}
+            {/* Animated glow overlay — layered on top */}
             <line
               x1={s.x} y1={s.y} x2={e.x} y2={e.y}
               stroke={`url(#hicg${i})`}
-              strokeWidth="0.55"
+              strokeWidth="0.7"
               filter="url(#hic-glow)"
               className="hic-pulse-line"
             />
