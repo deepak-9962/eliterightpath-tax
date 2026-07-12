@@ -306,6 +306,37 @@ export default function Footer() {
                     width: "32px",
                     height: "32px",
                     borderRadius: "8px",
+                    background: "rgba(169,13,200,0.2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flexShrink: 0,
+                    marginTop: "2px",
+                  }}
+                >
+                  <MapPin size={14} color="#A90DC8" />
+                </div>
+                <div>
+                  <div style={{ fontWeight: 600, color: "rgba(255,255,255,0.9)", marginBottom: "2px" }}>Office Address</div>
+                  <div style={{ lineHeight: "1.4" }}>
+                    229TH, 1ST FLOOR, 6TH BLOCK, <br />MOGAPPAIR CHENNAI 600037
+                  </div>
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: "12px",
+                  color: "rgba(255,255,255,0.7)",
+                  fontSize: "14px",
+                }}
+              >
+                <div
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    borderRadius: "8px",
                     background: "rgba(253,181,21,0.15)",
                     display: "flex",
                     alignItems: "center",

@@ -403,6 +403,40 @@ export default function ContactPage() {
                     </div>
                   </div>
                 </a>
+
+                {/* Office Address Card */}
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "16px",
+                    padding: "16px",
+                    background: "rgba(169,13,200,0.04)",
+                    borderRadius: "14px",
+                    border: "1px solid rgba(169,13,200,0.1)",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "44px",
+                      height: "44px",
+                      borderRadius: "12px",
+                      background: "linear-gradient(135deg, #A90DC8, #8A0AA3)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <MapPin size={18} color="white" />
+                  </div>
+                  <div>
+                    <div style={{ fontSize: "12px", color: "#9ca3af", fontWeight: 500, marginBottom: "2px" }}>Office Address</div>
+                    <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 700, fontSize: "14px", color: "#1a1a2e", lineHeight: "1.4" }}>
+                      229TH, 1ST FLOOR, 6TH BLOCK, <br />MOGAPPAIR, CHENNAI 600037
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -480,7 +514,7 @@ export default function ContactPage() {
               }}
             >
               <iframe
-                src="https://maps.google.com/maps?q=Elite+Right+Path+Tax+Consultancy&output=embed"
+                src="https://maps.google.com/maps?q=229TH,+1ST+FLOOR,+6TH+BLOCK,+MOGAPPAIR+CHENNAI+600037&output=embed"
                 width="100%"
                 height="220"
                 style={{ border: 0, display: "block" }}
