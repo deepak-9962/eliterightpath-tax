@@ -145,7 +145,7 @@ export default function HomePage() {
                     letterSpacing: "1px",
                   }}
                 >
-                  GST Registered Tax Consultancy
+                  Tax Consultancy
                 </span>
               </div>
             </Animated>
