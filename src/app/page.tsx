@@ -1012,7 +1012,7 @@ export default function HomePage() {
       {/* ─── CTA BANNER ─── */}
       <Animated variant="scaleIn">
         <section style={{ background:"linear-gradient(135deg, #1a0026 0%, #A90DC8 50%, #8A0AA3 100%)", padding:"72px 24px", textAlign:"center", position:"relative", overflow:"hidden" }}>
-          <div style={{ position:"absolute", inset:0, backgroundImage:"radial-gradient(circle, rgba(253,181,21,0.07) 1px, transparent 1px)", backgroundSize:"30px 30px" }} />
+          <div style={{ position:"absolute", inset:0, backgroundImage:"radial-gradient(circle, rgba(253,181,21,0.20) 1px, transparent 1px)", backgroundSize:"30px 30px" }} />
           <div style={{ position:"relative", zIndex:1 }}>
             <div style={{ display:"inline-flex", alignItems:"center", gap:"8px", background:"rgba(253,181,21,0.15)", border:"1px solid rgba(253,181,21,0.3)", padding:"6px 16px", borderRadius:"50px", marginBottom:"20px" }}>
               <Star size={14} color="#FDB515" />
