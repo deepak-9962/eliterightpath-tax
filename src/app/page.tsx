@@ -623,8 +623,28 @@ export default function HomePage() {
       </section>
 
       {/* ─── WHY CHOOSE US ─── */}
-      <section style={{ background:"linear-gradient(135deg, #f8f0ff 0%, #DFF2FE 100%)", padding:"80px 0" }}>
-        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"0 24px" }}>
+      <section
+        style={{
+          background: "linear-gradient(135deg, #f8f0ff 0%, #DFF2FE 100%)",
+          padding: "80px 0",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/* Dot-grid background pattern — matches the design system with 20% opacity */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "radial-gradient(circle, rgba(169,13,200,0.20) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+        />
+
+        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"0 24px", position: "relative", zIndex: 1 }}>
           <Animated variant="fadeUp">
             <div style={{ textAlign:"center", marginBottom:"52px" }}>
               <div className="section-tag" style={{ margin:"0 auto 16px" }}>Why Choose Us</div>
