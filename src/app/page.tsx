@@ -675,7 +675,7 @@ export default function HomePage() {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: "radial-gradient(circle, rgba(139,92,246,0.12) 1px, transparent 1px)",
+            backgroundImage: "radial-gradient(circle, rgba(139,92,246,0.20) 1px, transparent 1px)",
             backgroundSize: "28px 28px",
             pointerEvents: "none",
           }}
