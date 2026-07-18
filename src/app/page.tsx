@@ -732,7 +732,12 @@ export default function HomePage() {
               display: "grid",
               gridTemplateColumns: "1.05fr 1fr",
               gap: "40px",
-              alignItems: "center",
+              /*
+                alignItems: start — photo column stays at its intrinsic height
+                (driven by maxWidth + aspect-ratio below) instead of stretching
+                to match the taller text column, which caused the overflow.
+              */
+              alignItems: "start",
             }}
             className="about-grid"
           >
@@ -746,14 +751,15 @@ export default function HomePage() {
                     padding: "3px",
                     borderRadius: "28px",
                     background: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #6366F1 100%)",
-                    /*
-                      Outer glow: matches brand accent (violet/pink).
-                      Two layers — tight bloom + wide diffuse lift.
-                    */
                     boxShadow:
                       "0 0 0 1px rgba(168,85,247,0.15), " +
                       "0 0 40px 8px rgba(217,70,239,0.22), " +
                       "0 24px 64px rgba(0,0,0,0.12)",
+                    /* Cap the card so it doesn't blow up on wide columns.
+                       440px × (3/2) aspect-ratio = 660px tall — a natural portrait.
+                       margin:auto centres it within the 1.05fr column. */
+                    maxWidth: "440px",
+                    margin: "0 auto",
                     marginRight: "-28px",
                     position: "relative",
                     zIndex: 2,
