@@ -399,7 +399,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .fintech-dotted-grid {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.20) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.40) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
