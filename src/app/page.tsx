@@ -27,6 +27,7 @@ const whyChooseUs = [
   { icon: Users,      title: "Personalized Service",   desc: "Direct access to your consultant — not a ticket queue. Your concerns get individual attention.",      color: "#A90DC8" },
   { icon: ShieldCheck,title: "Full Transparency",      desc: "Clear pricing, no hidden charges. You always know what we're doing and why.",                         color: "#FDB515" },
   { icon: Zap,        title: "Full-Spectrum Coverage", desc: "From ITR to GST to company registration — one firm handles all your compliance needs.",              color: "#A90DC8" },
+  { icon: Star,       title: "Proven Track Record",    desc: "500+ returns filed, 7+ years of consistent delivery, and a growing family of satisfied clients across Tamil Nadu.", color: "#FDB515" },
 ];
 
 const trustStats = [
@@ -47,9 +48,11 @@ export default function HomePage() {
           display: "flex",
           alignItems: "center",
           paddingTop: "120px",
-          paddingBottom: "80px",
+          /* Extra bottom padding to give the wave room inside the section */
+          paddingBottom: "100px",
           position: "relative",
-          overflow: "hidden",
+          /* Allow wave SVG at the very bottom to bleed downward */
+          overflow: "visible",
         }}
       >
         {/* Layered glowing mesh elements */}
@@ -363,18 +366,142 @@ export default function HomePage() {
             .hero-cta-row { justify-content: center; }
           }
           @media (max-width: 768px) {
-            .hero-section { padding-top: 90px !important; padding-bottom: 60px !important; }
+            .hero-section { padding-top: 90px !important; padding-bottom: 80px !important; }
             .hero-right { min-height: 200px; }
             .hero-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
             .hero-cta-row { flex-direction: column; align-items: center; }
             .hero-cta-row > * { width: 100%; max-width: 300px; justify-content: center; text-align: center; }
           }
         `}</style>
+
+        {/* ─── ASYMMETRIC WAVE DIVIDER — absolutely at hero bottom ─── */}
+        {/*
+          Two-layer approach:
+          1) Glow blobs — direct children of the hero section (overflow:visible),
+             so they can bleed across the section boundary into the services section.
+          2) SVG wave container — self-contained, clips cleanly.
+        */}
+
+        {/* Primary bleeding glow — at the wave's deepest dip (~28% width) */}
+        {/*
+          negative bottom positions center of glow ABOVE the hero bottom edge
+          so the blur spills naturally downward into the light services section.
+        */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            left: "28%",
+            transform: "translateX(-50%)",
+            bottom: "-60px",
+            width: "240px",
+            height: "240px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(217,70,239,0.28) 0%, rgba(236,72,153,0.10) 40%, transparent 70%)",
+            filter: "blur(30px)",
+            pointerEvents: "none",
+            zIndex: 4,
+          }}
+        />
+
+        {/* Secondary glow — near right-side secondary rise (~72% width) */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            left: "72%",
+            transform: "translateX(-50%)",
+            bottom: "-40px",
+            width: "170px",
+            height: "170px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(139,92,246,0.20) 0%, transparent 70%)",
+            filter: "blur(25px)",
+            pointerEvents: "none",
+            zIndex: 4,
+          }}
+        />
+
+        {/* SVG wave — the actual shape that creates the curved seam */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0,
+            lineHeight: 0,
+            pointerEvents: "none",
+            zIndex: 3,
+          }}
+        >
+          {/*
+            Asymmetric path:
+              – Deep dip at ~32% (left-center) — glow pools here
+              – Subtle rise at ~62% (right-center)
+              – Shallow plateau near right edge
+            preserveAspectRatio="none" = full-width stretch at every breakpoint.
+            Responsive height set via .hero-wave-svg CSS class below.
+          */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 90"
+            preserveAspectRatio="none"
+            style={{ display: "block", width: "100%", height: "90px" }}
+            className="hero-wave-svg"
+          >
+            <path
+              d="M0,0
+                 C120,82 280,18 460,56
+                 C600,82 720,10 900,48
+                 C1060,78 1200,22 1320,44
+                 C1380,56 1420,40 1440,38
+                 L1440,90 L0,90 Z"
+              fill="#F5FEFD"
+            />
+          </svg>
+
+          <style>{`
+            /* Scale wave height down on smaller viewports */
+            @media (max-width: 767px) {
+              .hero-wave-svg { height: 50px !important; }
+            }
+            @media (min-width: 768px) and (max-width: 1023px) {
+              .hero-wave-svg { height: 64px !important; }
+            }
+          `}</style>
+        </div>
       </section>
 
+      {/* ─── WAVE DIVIDER is now inside the hero section above (absolutely positioned) ─── */}
+
       {/* ─── SERVICES OVERVIEW ─── */}
-      <section style={{ background:"#F5FEFD", padding:"80px 0" }}>
-        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"0 24px" }}>
+      <section
+        style={{
+          background: "#F5FEFD",
+          padding: "60px 0 80px",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        {/*
+          Dot-grid texture — mirrors hero's fintech-dotted-grid pattern at very low
+          opacity so it reads as subtle depth, not a competing pattern.
+          z-index 0 keeps it behind cards (z-index auto / stacking-context default).
+        */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: "radial-gradient(circle, rgba(169,13,200,0.20) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+            pointerEvents: "none",
+            zIndex: 0,
+          }}
+        />
+
+        <div style={{ maxWidth:"1280px", margin:"0 auto", padding:"0 24px", position:"relative", zIndex:1 }}>
           <Animated variant="fadeUp">
             <div style={{ textAlign:"center", marginBottom:"52px" }}>
               <div className="section-tag" style={{ margin:"0 auto 16px" }}>Our Services</div>
@@ -388,6 +515,13 @@ export default function HomePage() {
             </div>
           </Animated>
 
+          {/*
+            Grid: auto-fill with minmax(280px, 1fr).
+            At 1280px content width with 24px gaps this gives 4 columns.
+            With 8 cards (7 services + 1 CTA) we get a clean 4+4 layout on desktop,
+            3+3+2 on tablet, 2+2+2+2 on small tablet, and 1-col on mobile.
+            No dangling empty slot at any breakpoint.
+          */}
           <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(280px, 1fr))", gap:"24px" }}>
             {serviceCategories.map(({ icon:Icon, title, desc, anchor, color }, i) => (
               <Animated key={title} variant="fadeUp" delay={i * 80}>
@@ -419,6 +553,63 @@ export default function HomePage() {
                 </Link>
               </Animated>
             ))}
+
+            {/* 8th card — CTA card, fills the empty 4th slot in row 2 */}
+            {/* Identical card shape/hover as service cards; links to /contact */}
+            <Animated variant="fadeUp" delay={7 * 80}>
+              <Link href="/contact" style={{ textDecoration:"none", display:"block", height:"100%" }}>
+                <div
+                  style={{
+                    background: "linear-gradient(135deg, rgba(169,13,200,0.04) 0%, rgba(253,181,21,0.03) 100%)",
+                    borderRadius: "20px",
+                    padding: "28px",
+                    border: "1px solid rgba(169,13,200,0.15)",
+                    cursor: "pointer",
+                    height: "100%",
+                    transition: "all 0.35s cubic-bezier(0.4,0,0.2,1)",
+                  }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget;
+                    el.style.transform = "translateY(-8px)";
+                    el.style.boxShadow = "0 20px 60px rgba(169,13,200,0.18)";
+                    el.style.borderColor = "rgba(169,13,200,0.40)";
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget;
+                    el.style.transform = "translateY(0)";
+                    el.style.boxShadow = "none";
+                    el.style.borderColor = "rgba(169,13,200,0.15)";
+                  }}
+                >
+                  {/* Icon circle — gradient fill matching orchid brand accent */}
+                  <div
+                    style={{
+                      width: "52px",
+                      height: "52px",
+                      borderRadius: "14px",
+                      background: "linear-gradient(135deg, rgba(169,13,200,0.15), rgba(253,181,21,0.08))",
+                      border: "1px solid rgba(169,13,200,0.25)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: "18px",
+                      transition: "all 0.3s ease",
+                    }}
+                  >
+                    <MessageCircle size={24} color="#A90DC8" />
+                  </div>
+                  <h3 style={{ fontFamily:"Sora, sans-serif", fontWeight:700, fontSize:"17px", color:"#1a1a2e", marginBottom:"10px" }}>
+                    Need Something Custom?
+                  </h3>
+                  <p style={{ fontSize:"14px", color:"#6b7280", lineHeight:1.6, marginBottom:"16px" }}>
+                    Can&apos;t find what you&apos;re looking for? Talk to us — we tailor solutions to your specific compliance needs.
+                  </p>
+                  <div style={{ display:"flex", alignItems:"center", gap:"4px", color:"#A90DC8", fontWeight:600, fontSize:"13px", fontFamily:"Sora, sans-serif", transition:"gap 0.2s ease" }}>
+                    Talk to Us <ChevronRight size={14} />
+                  </div>
+                </div>
+              </Link>
+            </Animated>
           </div>
 
           <Animated variant="fadeUp" delay={200}>
@@ -443,7 +634,11 @@ export default function HomePage() {
             </div>
           </Animated>
 
-          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(260px, 1fr))", gap:"24px" }}>
+          {/*
+            minmax(320px, 1fr): at 1280px content width → 3 cols (3×320 + 2×24 = 1008 px fits).
+            6 cards → 3+3 on desktop, 2+2+2 on tablet, 1-col on mobile. No gap at any size.
+          */}
+          <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill, minmax(320px, 1fr))", gap:"24px" }}>
             {whyChooseUs.map(({ icon:Icon, title, desc, color }, i) => (
               <Animated key={title} variant="fadeUp" delay={i * 100}>
                 <div
@@ -531,20 +726,36 @@ export default function HomePage() {
                     padding: "3px",
                     borderRadius: "28px",
                     background: "linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #6366F1 100%)",
-                    boxShadow: "0 0 60px 10px rgba(168,85,247,0.18), 0 20px 60px rgba(0,0,0,0.08)",
-                    /* Slight editorial overlap into the text column */
+                    /*
+                      Outer glow: matches brand accent (violet/pink).
+                      Two layers — tight bloom + wide diffuse lift.
+                    */
+                    boxShadow:
+                      "0 0 0 1px rgba(168,85,247,0.15), " +
+                      "0 0 40px 8px rgba(217,70,239,0.22), " +
+                      "0 24px 64px rgba(0,0,0,0.12)",
                     marginRight: "-28px",
                     position: "relative",
                     zIndex: 2,
                   }}
                 >
-                  {/* Inner card — off-white, not pure white */}
+                  {/* Inner card — aspect-ratio matches actual portrait (1023×1537 ≈ 2:3) */}
                   <div
                     style={{
                       borderRadius: "26px",
                       overflow: "hidden",
-                      height: "440px",
-                      background: "#FAFAFA",
+                      /*
+                        aspect-ratio drives the height; no fixed px so the card
+                        naturally scales with the column width at every breakpoint.
+                        2/3 = 0.666, matching the 1023×1537 export exactly.
+                      */
+                      aspectRatio: "2 / 3",
+                      width: "100%",
+                      /*
+                        Dark background = no white flash on slow connections;
+                        matches our hero/dark theme.
+                      */
+                      background: "#0a0a0f",
                       position: "relative",
                       transition: "transform 0.5s ease, box-shadow 0.5s ease",
                     }}
@@ -559,7 +770,15 @@ export default function HomePage() {
                       src="/client.png"
                       alt="Mr. Raj Paudel — Proprietor, Elite Right Path Tax Consultancy"
                       fill
-                      style={{ objectFit: "contain", backgroundColor: "#FAFAFA" }}
+                      style={{
+                        /*
+                          cover: fills the card completely, no letterbox bars.
+                          top center: if any micro-crop occurs, face/head stays
+                          fully visible; feet/lower body may crop instead.
+                        */
+                        objectFit: "cover",
+                        objectPosition: "top center",
+                      }}
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                   </div>
