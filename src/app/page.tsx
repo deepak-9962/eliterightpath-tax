@@ -532,7 +532,7 @@ export default function HomePage() {
                       background:"white",
                       borderRadius:"20px",
                       padding:"28px",
-                      border:"1px solid rgba(169,13,200,0.08)",
+                      border:"1px solid rgba(169,13,200,0.18)",
                       cursor:"pointer",
                       height:"100%",
                       transition:"all 0.35s cubic-bezier(0.4,0,0.2,1)",
@@ -555,7 +555,7 @@ export default function HomePage() {
                       const el = e.currentTarget;
                       el.style.transform = "translateY(0)";
                       el.style.boxShadow = "none";
-                      el.style.borderColor = "rgba(169,13,200,0.08)";
+                      el.style.borderColor = "rgba(169,13,200,0.18)";
                     }}
                   >
                     <div style={{ width:"52px", height:"52px", borderRadius:"14px", background:`linear-gradient(135deg, ${color}20, ${color}10)`, border:`1px solid ${color}30`, display:"flex", alignItems:"center", justifyContent:"center", marginBottom:"18px", transition:"all 0.3s ease" }}>
@@ -581,7 +581,7 @@ export default function HomePage() {
                     background: "linear-gradient(135deg, rgba(169,13,200,0.04) 0%, rgba(253,181,21,0.03) 100%)",
                     borderRadius: "20px",
                     padding: "28px",
-                    border: "1px solid rgba(169,13,200,0.15)",
+                    border: "1px solid rgba(169,13,200,0.22)",
                     cursor: "pointer",
                     height: "100%",
                     transition: "all 0.35s cubic-bezier(0.4,0,0.2,1)",
@@ -598,7 +598,7 @@ export default function HomePage() {
                     const el = e.currentTarget;
                     el.style.transform = "translateY(0)";
                     el.style.boxShadow = "none";
-                    el.style.borderColor = "rgba(169,13,200,0.15)";
+                    el.style.borderColor = "rgba(169,13,200,0.22)";
                   }}
                 >
                   {/* Icon circle — gradient fill matching orchid brand accent */}
@@ -682,7 +682,7 @@ export default function HomePage() {
             {whyChooseUs.map(({ icon:Icon, title, desc, color }, i) => (
               <Animated key={title} variant="fadeUp" delay={i * 100}>
                 <div
-                  style={{ background:"white", borderRadius:"20px", padding:"28px", border:"1px solid rgba(169,13,200,0.08)", boxShadow:"0 4px 20px rgba(0,0,0,0.05)", transition:"all 0.35s cubic-bezier(0.4,0,0.2,1)", height:"100%" }}
+                  style={{ background:"white", borderRadius:"20px", padding:"28px", border:"1px solid rgba(169,13,200,0.18)", boxShadow:"0 4px 20px rgba(0,0,0,0.05)", transition:"all 0.35s cubic-bezier(0.4,0,0.2,1)", height:"100%" }}
                   onMouseEnter={e=>{e.currentTarget.style.transform="translateY(-8px)";e.currentTarget.style.boxShadow="0 20px 56px rgba(169,13,200,0.14)"}}
                   onMouseLeave={e=>{e.currentTarget.style.transform="translateY(0)";e.currentTarget.style.boxShadow="0 4px 20px rgba(0,0,0,0.05)"}}
                 >
