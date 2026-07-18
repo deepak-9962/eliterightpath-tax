@@ -96,7 +96,7 @@ export default function Footer() {
             >
               <CheckCircle size={14} color="#FDB515" />
               <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.8)", fontWeight: 600 }}>
-                GST: 33GAGPR3616R1Z2
+                GSTIN: 33GAGPR3616R1Z2
               </span>
             </div>
           </div>
