@@ -755,11 +755,16 @@ export default function HomePage() {
                       "0 0 0 1px rgba(168,85,247,0.15), " +
                       "0 0 40px 8px rgba(217,70,239,0.22), " +
                       "0 24px 64px rgba(0,0,0,0.12)",
-                    /* Cap the card so it doesn't blow up on wide columns.
-                       440px × (3/2) aspect-ratio = 660px tall — a natural portrait.
-                       margin:auto centres it within the 1.05fr column. */
+                    /*
+                      Use individual longhand margin properties — React warns when
+                      shorthand (margin) and longhand (marginRight) conflict on rerender.
+                      marginLeft:auto + marginRight:-28px achieves the same "centred with
+                      editorial right-bleed" effect without the shorthand conflict.
+                    */
                     maxWidth: "440px",
-                    margin: "0 auto",
+                    marginTop: "0",
+                    marginBottom: "0",
+                    marginLeft: "auto",
                     marginRight: "-28px",
                     position: "relative",
                     zIndex: 2,
