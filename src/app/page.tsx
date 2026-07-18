@@ -527,7 +527,24 @@ export default function HomePage() {
               <Animated key={title} variant="fadeUp" delay={i * 80}>
                 <Link href={`/services#${anchor}`} style={{ textDecoration:"none", display:"block", height:"100%" }}>
                   <div
-                    style={{ background:"white", borderRadius:"20px", padding:"28px", border:"1px solid rgba(169,13,200,0.08)", cursor:"pointer", height:"100%", transition:"all 0.35s cubic-bezier(0.4,0,0.2,1)" }}
+                    className="service-card-accented"
+                    style={{
+                      background:"white",
+                      borderRadius:"20px",
+                      padding:"28px",
+                      border:"1px solid rgba(169,13,200,0.08)",
+                      cursor:"pointer",
+                      height:"100%",
+                      transition:"all 0.35s cubic-bezier(0.4,0,0.2,1)",
+                      /* Set accent colors dynamically to match each card's theme */
+                      ...((color === "#FDB515") ? {
+                        "--card-accent-gradient": "linear-gradient(to right, #fbbf24, #f59e0b)",
+                        "--card-accent-glow": "rgba(245, 158, 11, 0.4)",
+                      } : {
+                        "--card-accent-gradient": "linear-gradient(to right, #a855f7, #d946ef)",
+                        "--card-accent-glow": "rgba(217, 70, 239, 0.4)",
+                      })
+                    } as React.CSSProperties}
                     onMouseEnter={e => {
                       const el = e.currentTarget;
                       el.style.transform = "translateY(-8px)";
@@ -559,6 +576,7 @@ export default function HomePage() {
             <Animated variant="fadeUp" delay={7 * 80}>
               <Link href="/contact" style={{ textDecoration:"none", display:"block", height:"100%" }}>
                 <div
+                  className="service-card-accented"
                   style={{
                     background: "linear-gradient(135deg, rgba(169,13,200,0.04) 0%, rgba(253,181,21,0.03) 100%)",
                     borderRadius: "20px",
@@ -567,7 +585,9 @@ export default function HomePage() {
                     cursor: "pointer",
                     height: "100%",
                     transition: "all 0.35s cubic-bezier(0.4,0,0.2,1)",
-                  }}
+                    "--card-accent-gradient": "linear-gradient(to right, #a855f7, #d946ef)",
+                    "--card-accent-glow": "rgba(217, 70, 239, 0.4)",
+                  } as React.CSSProperties}
                   onMouseEnter={e => {
                     const el = e.currentTarget;
                     el.style.transform = "translateY(-8px)";
@@ -1012,7 +1032,7 @@ export default function HomePage() {
       {/* ─── CTA BANNER ─── */}
       <Animated variant="scaleIn">
         <section style={{ background:"linear-gradient(135deg, #1a0026 0%, #A90DC8 50%, #8A0AA3 100%)", padding:"72px 24px", textAlign:"center", position:"relative", overflow:"hidden" }}>
-          <div style={{ position:"absolute", inset:0, backgroundImage:"radial-gradient(circle, rgba(253,181,21,0.20) 1px, transparent 1px)", backgroundSize:"30px 30px" }} />
+          <div style={{ position:"absolute", inset:0, backgroundImage:"radial-gradient(circle, rgba(253,181,21,0.07) 1px, transparent 1px)", backgroundSize:"30px 30px" }} />
           <div style={{ position:"relative", zIndex:1 }}>
             <div style={{ display:"inline-flex", alignItems:"center", gap:"8px", background:"rgba(253,181,21,0.15)", border:"1px solid rgba(253,181,21,0.3)", padding:"6px 16px", borderRadius:"50px", marginBottom:"20px" }}>
               <Star size={14} color="#FDB515" />

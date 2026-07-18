@@ -247,6 +247,32 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 20px 60px rgba(169, 13, 200, 0.15);
 }
 
+/* Decorative bottom accent border for service cards */
+.service-card-accented {
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-accented::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--card-accent-gradient, linear-gradient(to right, #a855f7, #d946ef));
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.9;
+}
+
+.service-card-accented:hover::after {
+  opacity: 1;
+  filter: brightness(1.15);
+  box-shadow: 0 -2px 12px var(--card-accent-glow, rgba(217, 70, 239, 0.5));
+}
+
 /* Accordion transitions — height controlled by grid-template-rows on parent */
 .accordion-content {
   /* Content is always visible; parent wrapper's overflow:hidden + grid-template-rows handles clipping */
