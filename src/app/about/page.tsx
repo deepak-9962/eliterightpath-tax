@@ -45,7 +45,7 @@ const firmInfo = [
   { icon: Phone, label: "Phone & WhatsApp", value: "+91 93600 44152" },
   { icon: MapPin, label: "Office", value: "Mogappair, Chennai" },
   { icon: MapPin, label: "Service Area", value: "Tamil Nadu & Pan India (Online)" },
-  { icon: Clock, label: "Business Hours", value: "Mon – Sat: 10:00 AM – 8:00 PM" },
+  { icon: Clock, label: "Business Hours", value: "Mon – Sat: 10:00 AM – 9:00 PM" },
 ];
 
 const founderPrinciples = [

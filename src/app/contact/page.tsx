@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Phone, MessageCircle, MapPin, Clock, Mail, CheckCircle, Send, ArrowRight } from "lucide-react";
 import Animated from "@/components/Animated";
 
-const CONTACT_EMAIL = "info@eliterightpath.com";
+const CONTACT_EMAIL = "eliterightpathtax@gmail.com";
 
 const services = [
   "Income Tax Return (ITR) Filing",
@@ -44,6 +44,7 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isOpening, setIsOpening] = useState(false);
   const [preparedInfo, setPreparedInfo] = useState<PreparedInfo | null>(null);
+  const [popupBlocked, setPopupBlocked] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -62,10 +63,12 @@ export default function ContactPage() {
       newErrors.name = "Please enter your full name.";
     }
 
-    if (!formData.phone.trim()) {
+    const phoneTrimmed = formData.phone.trim();
+    const phoneDigits = phoneTrimmed.replace(/\D/g, "");
+    if (!phoneTrimmed) {
       newErrors.phone = "Please enter your phone number.";
-    } else if (formData.phone.trim().replace(/[^0-9+]/g, "").length < 7) {
-      newErrors.phone = "Please enter a valid phone number.";
+    } else if (phoneDigits.length < 10 || phoneDigits.length > 13) {
+      newErrors.phone = "Please enter a valid 10-digit phone number.";
     }
 
     if (formData.email.trim()) {
@@ -143,11 +146,16 @@ export default function ContactPage() {
     });
 
     // Open Gmail compose in a new tab/window immediately within user gesture
+    let opened = false;
     try {
-      window.open(gmailComposeUrl, "_blank", "noopener,noreferrer");
+      const win = window.open(gmailComposeUrl, "_blank", "noopener,noreferrer");
+      if (win && !win.closed && typeof win.closed !== "undefined") {
+        opened = true;
+      }
     } catch {
-      // Graceful fallback handled by preparedInfo actionable links
+      opened = false;
     }
+    setPopupBlocked(!opened);
 
     setTimeout(() => {
       setIsOpening(false);
@@ -448,6 +456,7 @@ export default function ContactPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "8px",
+                  fontSize: "15px",
                 }}
               >
                 {isOpening ? (
@@ -456,7 +465,7 @@ export default function ContactPage() {
                   </>
                 ) : (
                   <>
-                    <Send size={15} /> Send Message
+                    Continue in Gmail &rarr;
                   </>
                 )}
               </button>
@@ -468,8 +477,12 @@ export default function ContactPage() {
                   aria-live="polite"
                   style={{
                     padding: "16px 18px",
-                    background: "rgba(169, 13, 200, 0.05)",
-                    border: "1px solid rgba(169, 13, 200, 0.22)",
+                    background: popupBlocked
+                      ? "rgba(239, 68, 68, 0.05)"
+                      : "rgba(169, 13, 200, 0.05)",
+                    border: `1px solid ${
+                      popupBlocked ? "rgba(239, 68, 68, 0.25)" : "rgba(169, 13, 200, 0.22)"
+                    }`,
                     borderRadius: "14px",
                     marginTop: "4px",
                   }}
@@ -491,20 +504,34 @@ export default function ContactPage() {
                         width: "28px",
                         height: "28px",
                         borderRadius: "8px",
-                        background: "rgba(169, 13, 200, 0.12)",
+                        background: popupBlocked
+                          ? "rgba(239, 68, 68, 0.12)"
+                          : "rgba(169, 13, 200, 0.12)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        color: "#A90DC8",
+                        color: popupBlocked ? "#DC2626" : "#A90DC8",
                         flexShrink: 0,
                       }}
                     >
                       <Mail size={15} />
                     </div>
-                    <span>Your message has been prepared in Gmail</span>
+                    <span>
+                      {popupBlocked
+                        ? "We couldn't open Gmail automatically"
+                        : "Gmail opened with your message ready to send"}
+                    </span>
                   </div>
                   <p style={{ fontSize: "13.5px", color: "#4b5563", margin: "0 0 10px 0", lineHeight: 1.5 }}>
-                    A new Gmail compose window has been opened with your enquiry pre-filled to <strong>{CONTACT_EMAIL}</strong>. Please review and click <strong>Send</strong> in Gmail to complete your message.
+                    {popupBlocked ? (
+                      <>
+                        Your browser blocked the popup. Please click below to open your pre-filled enquiry in Gmail or use your default email client.
+                      </>
+                    ) : (
+                      <>
+                        Your enquiry has been pre-filled to <strong>{CONTACT_EMAIL}</strong>. Please review your details in Gmail and click <strong>Send</strong>.
+                      </>
+                    )}
                   </p>
                   <div
                     style={{
@@ -514,7 +541,9 @@ export default function ContactPage() {
                       gap: "10px",
                       fontSize: "13px",
                       paddingTop: "8px",
-                      borderTop: "1px solid rgba(169, 13, 200, 0.1)",
+                      borderTop: `1px solid ${
+                        popupBlocked ? "rgba(239, 68, 68, 0.15)" : "rgba(169, 13, 200, 0.1)"
+                      }`,
                     }}
                   >
                     <a
@@ -530,7 +559,7 @@ export default function ContactPage() {
                         gap: "4px",
                       }}
                     >
-                      Open Gmail window again &rarr;
+                      {popupBlocked ? "Click here to open Gmail →" : "Open Gmail window again →"}
                     </a>
                     <span style={{ color: "#d1d5db" }}>•</span>
                     <a
@@ -731,7 +760,7 @@ export default function ContactPage() {
                     </div>
                     <div style={{ fontSize: "14px", color: "#6b7280", lineHeight: 1.6 }}>
                       Monday – Saturday<br />
-                      10:00 AM – 8:00 PM<br />
+                      10:00 AM – 9:00 PM<br />
                       <span style={{ color: "#EF4444", fontSize: "13px" }}>Sunday: Closed</span>
                     </div>
                   </div>

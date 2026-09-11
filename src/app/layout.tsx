@@ -77,7 +77,7 @@ export default function RootLayout({
                 "@type": "Person",
                 name: "Raj Paudel",
               },
-              openingHours: "Mo-Sa 09:00-18:00",
+              openingHours: "Mo-Sa 10:00-21:00",
               priceRange: "₹₹",
               serviceArea: {
                 "@type": "State",

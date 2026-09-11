@@ -11,6 +11,7 @@ import Animated from "@/components/Animated";
 import HeroProfileVisual from "@/components/HeroProfileVisual";
 import WhoWeHelp from "@/components/home/WhoWeHelp";
 import HowWeWork from "@/components/home/HowWeWork";
+import IndustriesWeServe from "@/components/home/IndustriesWeServe";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 
 const featuredServices = [
@@ -321,11 +322,11 @@ export default function HomePage() {
                 <div style={{ width: "1px", height: "28px", background: "rgba(255, 255, 255, 0.1)" }} className="cred-divider" />
 
                 <div>
-                  <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: "16px", color: "#A855F7" }}>
-                    3+ Years
+                  <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: "15px", color: "#A855F7" }}>
+                    10:00 AM – 9:00 PM
                   </div>
                   <div style={{ fontSize: "11px", color: "rgba(255, 255, 255, 0.5)", fontWeight: 500 }}>
-                    Tax Advisory
+                    Support Hours
                   </div>
                 </div>
               </div>
@@ -1599,9 +1600,10 @@ export default function HomePage() {
         `}</style>
       </section>
 
+      {/* ─── 7. INDUSTRIES WE SERVE SECTION ─── */}
+      <IndustriesWeServe />
 
-
-      {/* ─── 7. TESTIMONIALS SECTION ─── */}
+      {/* ─── 8. TESTIMONIALS SECTION ─── */}
 
       <TestimonialsSection />
 

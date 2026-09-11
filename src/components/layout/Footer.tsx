@@ -355,7 +355,7 @@ export default function Footer() {
                 </div>
                 <div>
                   <div style={{ fontWeight: 600, color: "rgba(255,255,255,0.9)", marginBottom: "2px" }}>Business Hours</div>
-                  <div>Mon – Sat: 10:00 AM – 8:00 PM</div>
+                  <div>Mon – Sat: 10:00 AM – 9:00 PM</div>
                   <div>Sunday: Closed</div>
                 </div>
               </div>
