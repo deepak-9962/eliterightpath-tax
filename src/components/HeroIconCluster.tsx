@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import {
-  Receipt, FileText, Building2, Briefcase, Calculator, ShieldCheck,
+  Receipt, FileText, Building2, Briefcase, Calculator, ShieldCheck, BookOpen,
 } from "lucide-react";
 
 /* ─── Layout constants ─────────────────────────────────────── */
@@ -42,12 +42,12 @@ function pillSVG(deg: number) {
 
 /* ─── Pill data ───────────────────────────────────────────── */
 const PILLS = [
-  { label: "GSTIN Registration",  Icon: Receipt,    color: "#8B5CF6", lineColor: "#8B5CF6", angleDeg:   0, delay: 0,   floatClass: "hic-float-0", href: "/services#gst" },
-  { label: "Income Tax Filing", Icon: FileText,   color: "#EC4899", lineColor: "#EC4899", angleDeg:  60, delay: 0.5, floatClass: "hic-float-1", href: "/services#income-tax" },
-  { label: "Company Reg.",      Icon: Building2,  color: "#6366F1", lineColor: "#6366F1", angleDeg: 120, delay: 1.0, floatClass: "hic-float-2", href: "/services#business-registration" },
-  { label: "MSME Registration", Icon: Briefcase,  color: "#8B5CF6", lineColor: "#8B5CF6", angleDeg: 180, delay: 1.5, floatClass: "hic-float-3", href: "/services#business-registration" },
-  { label: "Accounting",        Icon: Calculator, color: "#A78BFA", lineColor: "#6366F1", angleDeg: 240, delay: 2.0, floatClass: "hic-float-4", href: "/services#accounting" },
-  { label: "Compliance",        Icon: ShieldCheck,color: "#EC4899", lineColor: "#EC4899", angleDeg: 300, delay: 2.5, floatClass: "hic-float-5", href: "/services#compliance" },
+  { label: "GSTIN Registration",   Icon: Receipt,     color: "#8B5CF6", lineColor: "#8B5CF6", angleDeg:   0, delay: 0,   href: "/services#gst" },
+  { label: "Income Tax Filing",    Icon: FileText,    color: "#EC4899", lineColor: "#EC4899", angleDeg:  60, delay: 0.5, href: "/services#income-tax" },
+  { label: "Company Reg.",         Icon: Building2,   color: "#6366F1", lineColor: "#6366F1", angleDeg: 120, delay: 1.0, href: "/services#business-registration" },
+  { label: "Book Keeping",         Icon: BookOpen,    color: "#FDB515", lineColor: "#FDB515", angleDeg: 180, delay: 1.5, href: "/services#bookkeeping" },
+  { label: "Accounts Maintenance", Icon: Calculator,  color: "#A78BFA", lineColor: "#6366F1", angleDeg: 240, delay: 2.0, href: "/services#accounts-maintenance" },
+  { label: "Compliance & Legal",   Icon: ShieldCheck, color: "#EC4899", lineColor: "#EC4899", angleDeg: 300, delay: 2.5, href: "/services#compliance" },
 ];
 
 /* ─── SVG connector lines ─────────────────────────────────── */
@@ -128,41 +128,24 @@ export default function HeroIconCluster() {
   return (
     <>
       <style>{`
-        /* ── Pill float keyframes ── */
-        @keyframes hic-float-a {
-          0%,100% { transform: translate(-50%,-50%) translateY(0px); }
-          50%      { transform: translate(-50%,-50%) translateY(-9px); }
+        /* ── Static pill styling: firmly sticks to line endpoint ── */
+        .hic-static-pill {
+          transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
         }
-        @keyframes hic-float-b {
-          0%,100% { transform: translate(-50%,-50%) translateY(0px); }
-          50%      { transform: translate(-50%,-50%) translateY(8px); }
+        .hic-static-pill:hover {
+          transform: translate(-50%, -50%) scale(1.06) !important;
+          box-shadow: 0 10px 28px rgba(139, 92, 246, 0.4) !important;
         }
-        @keyframes hic-float-c {
-          0%,100% { transform: translate(-50%,-50%) translateY(0px); }
-          33%      { transform: translate(-50%,-50%) translateY(-8px); }
-          66%      { transform: translate(-50%,-50%) translateY(5px); }
-        }
-        .hic-float-0 { animation: hic-float-a 4s   ease-in-out infinite 0s; }
-        .hic-float-1 { animation: hic-float-b 5s   ease-in-out infinite 0.5s; }
-        .hic-float-2 { animation: hic-float-a 4.5s ease-in-out infinite 1s; }
-        .hic-float-3 { animation: hic-float-c 6s   ease-in-out infinite 1.5s; }
-        .hic-float-4 { animation: hic-float-b 5.5s ease-in-out infinite 2s; }
-        .hic-float-5 { animation: hic-float-a 4.2s ease-in-out infinite 2.5s; }
 
-        /* ── Glow ring rotation (only the ring spins, never the logo) ── */
+        /* ── Glow ring rotation (only the ring spins, never the logo or pills) ── */
         @keyframes hic-ring-spin {
           from { transform: rotate(0deg); }
           to   { transform: rotate(360deg); }
         }
         .hic-glow-ring { animation: hic-ring-spin 7s linear infinite; }
 
-        /* ── Reduced motion: disable all animations ── */
+        /* ── Reduced motion: disable rotating ring and pulse line ── */
         @media (prefers-reduced-motion: reduce) {
-          .hic-float-0,.hic-float-1,.hic-float-2,
-          .hic-float-3,.hic-float-4,.hic-float-5 {
-            animation: none !important;
-            transform: translate(-50%,-50%) !important;
-          }
           .hic-glow-ring  { animation-play-state: paused !important; }
           .hic-pulse-line { display: none !important; }
         }
@@ -285,7 +268,7 @@ export default function HeroIconCluster() {
           }} />
         </div>
 
-        {/* ── z=10 — Orbiting service pills ── */}
+        {/* ── z=10 — Static service pills sticking to the line ── */}
         {PILLS.map((pill) => {
           const pos = pillPos(pill.angleDeg);
           const { Icon } = pill;
@@ -293,7 +276,7 @@ export default function HeroIconCluster() {
             <Link
               key={pill.label}
               href={pill.href}
-              className={`glass-card-fintech fintech-gradient-border ${pill.floatClass}`}
+              className="glass-card-fintech fintech-gradient-border hic-static-pill"
               style={{
                 position: "absolute",
                 top: pos.top, left: pos.left,

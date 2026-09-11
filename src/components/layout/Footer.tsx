@@ -8,7 +8,8 @@ const serviceLinks = [
   "Income Tax Services",
   "GST Services",
   "Business Registration",
-  "Accounting & Bookkeeping",
+  "Book Keeping",
+  "Accounts Maintenance",
   "Compliance & Legal",
   "Audit Support",
   "Financial Advisory",
@@ -27,7 +28,8 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "linear-gradient(135deg, #0f0018 0%, #1a0026 50%, #0d001a 100%)",
+        background: "#0B0614",
+        borderTop: "1px solid rgba(168, 85, 247, 0.15)",
         color: "white",
         paddingTop: "64px",
         paddingBottom: "0",
@@ -292,13 +294,17 @@ export default function Footer() {
                 </div>
                 WhatsApp Chat
               </a>
-              <div
+              <a
+                href="https://www.google.com/maps?q=13.082695,80.174067"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: "flex",
                   alignItems: "flex-start",
                   gap: "12px",
                   color: "rgba(255,255,255,0.7)",
                   fontSize: "14px",
+                  textDecoration: "none",
                 }}
               >
                 <div
@@ -322,7 +328,7 @@ export default function Footer() {
                     229TH, 1ST FLOOR, 6TH BLOCK, <br />MOGAPPAIR CHENNAI 600037
                   </div>
                 </div>
-              </div>
+              </a>
               <div
                 style={{
                   display: "flex",

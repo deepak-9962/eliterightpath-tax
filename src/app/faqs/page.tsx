@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     q: "What is the last date to file ITR?",
-    a: "For most individuals (non-audit cases), the due date is July 31 of the assessment year. For businesses requiring tax audit, it's October 31. For companies requiring transfer pricing, November 30. Filing after the due date attracts late fees of ₹1,000–₹5,000 under Section 234F. We track all deadlines for our clients proactively.",
+    a: "For most individuals (non-audit cases), the due date is July 31 of the assessment year. For businesses requiring an audit, it's October 31. For companies requiring transfer pricing, November 30. Filing after the due date attracts late fees of ₹1,000–₹5,000 under Section 234F. We track all deadlines for our clients proactively.",
   },
   {
     q: "What happens if I miss the GST filing deadline?",

@@ -5,16 +5,33 @@ import Link from "next/link";
 import { Phone, MessageCircle, MapPin, Clock, Mail, CheckCircle, Send, ArrowRight } from "lucide-react";
 import Animated from "@/components/Animated";
 
+const CONTACT_EMAIL = "info@eliterightpath.com";
+
 const services = [
   "Income Tax Return (ITR) Filing",
   "GST Registration & Filing",
   "Business Registration",
-  "Accounting & Bookkeeping",
+  "Book Keeping",
+  "Accounts Maintenance",
   "Tax Notice Handling",
   "Audit Support",
   "Financial Advisory",
   "Other / Not Sure",
 ];
+
+interface FormErrors {
+  name?: string;
+  phone?: string;
+  email?: string;
+  service?: string;
+  message?: string;
+}
+
+interface PreparedInfo {
+  gmailUrl: string;
+  mailtoUrl: string;
+  service: string;
+}
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -24,37 +41,117 @@ export default function ContactPage() {
     service: "",
     message: "",
   });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [isOpening, setIsOpening] = useState(false);
+  const [preparedInfo, setPreparedInfo] = useState<PreparedInfo | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FormErrors]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
+    }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-    try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_ACCESS_KEY",
-          subject: `New Enquiry from ${formData.name} — ${formData.service}`,
-          from_name: "Elite Right Path Website",
-          ...formData,
-        }),
-      });
-      if (res.ok) {
-        setStatus("success");
-        setFormData({ name: "", phone: "", email: "", service: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
+  const validate = (): FormErrors => {
+    const newErrors: FormErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Please enter your full name.";
     }
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Please enter your phone number.";
+    } else if (formData.phone.trim().replace(/[^0-9+]/g, "").length < 7) {
+      newErrors.phone = "Please enter a valid phone number.";
+    }
+
+    if (formData.email.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email.trim())) {
+        newErrors.email = "Please enter a valid email address.";
+      }
+    }
+
+    if (!formData.service.trim()) {
+      newErrors.service = "Please select a service.";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Please enter your message.";
+    }
+
+    return newErrors;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setErrors({});
+    setIsOpening(true);
+
+    const trimmedName = formData.name.trim();
+    const trimmedPhone = formData.phone.trim();
+    const trimmedEmail = formData.email.trim();
+    const trimmedService = formData.service.trim();
+    const trimmedMessage = formData.message.trim();
+
+    const subject = `New Website Enquiry - ${trimmedName} - ${trimmedService}`;
+
+    const body = [
+      "Hello Elite Right Path,",
+      "",
+      "A new enquiry was submitted through the website.",
+      "",
+      "--------------------------------",
+      "CLIENT DETAILS",
+      "--------------------------------",
+      "",
+      `Name: ${trimmedName}`,
+      `Phone: ${trimmedPhone}`,
+      `Email: ${trimmedEmail || "Not provided"}`,
+      `Service: ${trimmedService}`,
+      "",
+      "--------------------------------",
+      "MESSAGE",
+      "--------------------------------",
+      "",
+      trimmedMessage,
+      "",
+      "--------------------------------",
+      "",
+      "Submitted via:",
+      "Elite Right Path Website",
+    ].join("\n");
+
+    const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    const mailtoUrl = `mailto:${encodeURIComponent(CONTACT_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    setPreparedInfo({
+      gmailUrl: gmailComposeUrl,
+      mailtoUrl,
+      service: trimmedService,
+    });
+
+    // Open Gmail compose in a new tab/window immediately within user gesture
+    try {
+      window.open(gmailComposeUrl, "_blank", "noopener,noreferrer");
+    } catch {
+      // Graceful fallback handled by preparedInfo actionable links
+    }
+
+    setTimeout(() => {
+      setIsOpening(false);
+    }, 800);
   };
 
   return (
@@ -162,138 +259,293 @@ export default function ContactPage() {
               We'll get back to you within one business day.
             </p>
 
-            {status === "success" ? (
-              <div
-                style={{
-                  background: "linear-gradient(135deg, rgba(169,13,200,0.08), rgba(253,181,21,0.06))",
-                  borderRadius: "16px",
-                  padding: "40px",
-                  textAlign: "center",
-                  border: "2px solid rgba(169,13,200,0.15)",
-                }}
-              >
-                <CheckCircle size={48} color="#A90DC8" style={{ margin: "0 auto 16px", display: "block" }} />
-                <h3 style={{ fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: "20px", color: "#1a1a2e", marginBottom: "10px" }}>
-                  Message Sent!
-                </h3>
-                <p style={{ fontSize: "15px", color: "#6b7280" }}>
-                  Thank you for reaching out. We'll contact you within one business day.
-                </p>
+            <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+              {/* Full Name */}
+              <div>
+                <label
+                  htmlFor="contact-name"
+                  style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#374151", marginBottom: "6px", fontFamily: "Sora, sans-serif" }}
+                >
+                  Full Name *
+                </label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Your full name"
+                  className="form-input"
+                  aria-required="true"
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? "contact-name-error" : undefined}
+                  style={{
+                    borderColor: errors.name ? "#EF4444" : undefined,
+                  }}
+                />
+                {errors.name && (
+                  <span
+                    id="contact-name-error"
+                    role="alert"
+                    style={{ display: "block", fontSize: "12px", color: "#DC2626", marginTop: "4px" }}
+                  >
+                    {errors.name}
+                  </span>
+                )}
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+
+              {/* Phone & Email Row */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="form-row">
                 <div>
-                  <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#374151", marginBottom: "6px", fontFamily: "Sora, sans-serif" }}>
-                    Full Name *
+                  <label
+                    htmlFor="contact-phone"
+                    style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#374151", marginBottom: "6px", fontFamily: "Sora, sans-serif" }}
+                  >
+                    Phone Number *
                   </label>
                   <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
+                    id="contact-phone"
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
                     onChange={handleChange}
-                    required
-                    placeholder="Your full name"
+                    placeholder="+91 XXXXX XXXXX"
                     className="form-input"
-                  />
-                </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }} className="form-row">
-                  <div>
-                    <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#374151", marginBottom: "6px", fontFamily: "Sora, sans-serif" }}>
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      required
-                      placeholder="+91 XXXXX XXXXX"
-                      className="form-input"
-                    />
-                  </div>
-                  <div>
-                    <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#374151", marginBottom: "6px", fontFamily: "Sora, sans-serif" }}>
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder="you@example.com"
-                      className="form-input"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#374151", marginBottom: "6px", fontFamily: "Sora, sans-serif" }}>
-                    Service Interested In *
-                  </label>
-                  <select
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    required
-                    className="form-input"
-                    style={{ cursor: "pointer" }}
-                  >
-                    <option value="">Select a service...</option>
-                    {services.map((s) => (
-                      <option key={s} value={s}>{s}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#374151", marginBottom: "6px", fontFamily: "Sora, sans-serif" }}>
-                    Your Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    placeholder="Briefly describe what you need help with..."
-                    className="form-input"
-                    style={{ resize: "vertical", minHeight: "100px" }}
-                  />
-                </div>
-
-                {status === "error" && (
-                  <div
+                    aria-required="true"
+                    aria-invalid={!!errors.phone}
+                    aria-describedby={errors.phone ? "contact-phone-error" : undefined}
                     style={{
-                      padding: "12px 16px",
-                      background: "#FEF2F2",
-                      border: "1px solid #FCA5A5",
-                      borderRadius: "10px",
-                      fontSize: "14px",
-                      color: "#B91C1C",
+                      borderColor: errors.phone ? "#EF4444" : undefined,
                     }}
+                  />
+                  {errors.phone && (
+                    <span
+                      id="contact-phone-error"
+                      role="alert"
+                      style={{ display: "block", fontSize: "12px", color: "#DC2626", marginTop: "4px" }}
+                    >
+                      {errors.phone}
+                    </span>
+                  )}
+                </div>
+                <div>
+                  <label
+                    htmlFor="contact-email"
+                    style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#374151", marginBottom: "6px", fontFamily: "Sora, sans-serif" }}
                   >
-                    Something went wrong. Please call or WhatsApp us directly.
-                  </div>
-                )}
+                    Email Address
+                  </label>
+                  <input
+                    id="contact-email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                    className="form-input"
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "contact-email-error" : undefined}
+                    style={{
+                      borderColor: errors.email ? "#EF4444" : undefined,
+                    }}
+                  />
+                  {errors.email && (
+                    <span
+                      id="contact-email-error"
+                      role="alert"
+                      style={{ display: "block", fontSize: "12px", color: "#DC2626", marginTop: "4px" }}
+                    >
+                      {errors.email}
+                    </span>
+                  )}
+                </div>
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={status === "loading"}
-                  className="btn-orchid contact-submit-btn"
+              {/* Service Interested In */}
+              <div>
+                <label
+                  htmlFor="contact-service"
+                  style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#374151", marginBottom: "6px", fontFamily: "Sora, sans-serif" }}
+                >
+                  Service Interested In *
+                </label>
+                <select
+                  id="contact-service"
+                  name="service"
+                  value={formData.service}
+                  onChange={handleChange}
+                  className="form-input"
                   style={{
-                    width: "100%",
-                    justifyContent: "center",
-                    opacity: status === "loading" ? 0.7 : 1,
-                    cursor: status === "loading" ? "not-allowed" : "pointer",
+                    cursor: "pointer",
+                    borderColor: errors.service ? "#EF4444" : undefined,
+                  }}
+                  aria-required="true"
+                  aria-invalid={!!errors.service}
+                  aria-describedby={errors.service ? "contact-service-error" : undefined}
+                >
+                  <option value="">Select a service...</option>
+                  {services.map((s) => (
+                    <option key={s} value={s}>{s}</option>
+                  ))}
+                </select>
+                {errors.service && (
+                  <span
+                    id="contact-service-error"
+                    role="alert"
+                    style={{ display: "block", fontSize: "12px", color: "#DC2626", marginTop: "4px" }}
+                  >
+                    {errors.service}
+                  </span>
+                )}
+              </div>
+
+              {/* Message */}
+              <div>
+                <label
+                  htmlFor="contact-message"
+                  style={{ display: "block", fontSize: "13px", fontWeight: 600, color: "#374151", marginBottom: "6px", fontFamily: "Sora, sans-serif" }}
+                >
+                  Your Message *
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  placeholder="Briefly describe what you need help with..."
+                  className="form-input"
+                  style={{
+                    resize: "vertical",
+                    minHeight: "100px",
+                    borderColor: errors.message ? "#EF4444" : undefined,
+                  }}
+                  aria-required="true"
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? "contact-message-error" : undefined}
+                />
+                {errors.message && (
+                  <span
+                    id="contact-message-error"
+                    role="alert"
+                    style={{ display: "block", fontSize: "12px", color: "#DC2626", marginTop: "4px" }}
+                  >
+                    {errors.message}
+                  </span>
+                )}
+              </div>
+
+              {/* Submit button */}
+              <button
+                type="submit"
+                disabled={isOpening}
+                className="btn-orchid contact-submit-btn"
+                style={{
+                  width: "100%",
+                  justifyContent: "center",
+                  opacity: isOpening ? 0.85 : 1,
+                  cursor: isOpening ? "default" : "pointer",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                }}
+              >
+                {isOpening ? (
+                  <>
+                    <Send size={15} /> Opening Gmail...
+                  </>
+                ) : (
+                  <>
+                    <Send size={15} /> Send Message
+                  </>
+                )}
+              </button>
+
+              {/* Post-trigger Informational Feedback Banner */}
+              {preparedInfo && (
+                <div
+                  role="status"
+                  aria-live="polite"
+                  style={{
+                    padding: "16px 18px",
+                    background: "rgba(169, 13, 200, 0.05)",
+                    border: "1px solid rgba(169, 13, 200, 0.22)",
+                    borderRadius: "14px",
+                    marginTop: "4px",
                   }}
                 >
-                  {status === "loading" ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      <Send size={15} /> Send Message
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      color: "#1a1a2e",
+                      fontWeight: 700,
+                      fontSize: "14.5px",
+                      fontFamily: "Sora, sans-serif",
+                      marginBottom: "6px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "28px",
+                        height: "28px",
+                        borderRadius: "8px",
+                        background: "rgba(169, 13, 200, 0.12)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#A90DC8",
+                        flexShrink: 0,
+                      }}
+                    >
+                      <Mail size={15} />
+                    </div>
+                    <span>Your message has been prepared in Gmail</span>
+                  </div>
+                  <p style={{ fontSize: "13.5px", color: "#4b5563", margin: "0 0 10px 0", lineHeight: 1.5 }}>
+                    A new Gmail compose window has been opened with your enquiry pre-filled to <strong>{CONTACT_EMAIL}</strong>. Please review and click <strong>Send</strong> in Gmail to complete your message.
+                  </p>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexWrap: "wrap",
+                      alignItems: "center",
+                      gap: "10px",
+                      fontSize: "13px",
+                      paddingTop: "8px",
+                      borderTop: "1px solid rgba(169, 13, 200, 0.1)",
+                    }}
+                  >
+                    <a
+                      href={preparedInfo.gmailUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        color: "#A90DC8",
+                        fontWeight: 700,
+                        textDecoration: "underline",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "4px",
+                      }}
+                    >
+                      Open Gmail window again &rarr;
+                    </a>
+                    <span style={{ color: "#d1d5db" }}>•</span>
+                    <a
+                      href={preparedInfo.mailtoUrl}
+                      style={{
+                        color: "#4b5563",
+                        textDecoration: "underline",
+                      }}
+                    >
+                      Use default mail client (mailto)
+                    </a>
+                  </div>
+                </div>
+              )}
+            </form>
           </div>
           </Animated>
 
@@ -416,6 +668,12 @@ export default function ContactPage() {
                     border: "1px solid rgba(169,13,200,0.1)",
                   }}
                 >
+                  <a
+                  href="https://www.google.com/maps?q=13.082695,80.174067"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ display: "flex", gap: "14px", alignItems: "flex-start", textDecoration: "none" }}
+                >
                   <div
                     style={{
                       width: "44px",
@@ -436,6 +694,7 @@ export default function ContactPage() {
                       229TH, 1ST FLOOR, 6TH BLOCK, <br />MOGAPPAIR, CHENNAI 600037
                     </div>
                   </div>
+                </a>
                 </div>
               </div>
             </div>
@@ -514,15 +773,45 @@ export default function ContactPage() {
               }}
             >
               <iframe
-                src="https://maps.google.com/maps?q=229TH,+1ST+FLOOR,+6TH+BLOCK,+MOGAPPAIR+CHENNAI+600037&output=embed"
+                src="https://maps.google.com/maps?q=13.082695,80.174067&hl=en&z=17&output=embed"
                 width="100%"
-                height="220"
+                height="240"
                 style={{ border: 0, display: "block" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="Elite Right Path Tax Consultancy Location"
               />
+              <div
+                style={{
+                  padding: "10px 16px",
+                  background: "#FAF7FF",
+                  borderTop: "1px solid rgba(169,13,200,0.08)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                <span style={{ fontSize: "12px", color: "#6b7280", fontWeight: 500 }}>
+                  📍 Mogappair, Chennai
+                </span>
+                <a
+                  href="https://www.google.com/maps?q=13.082695,80.174067"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: "12px",
+                    fontWeight: 700,
+                    color: "#A90DC8",
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "4px",
+                  }}
+                >
+                  Open in Google Maps →
+                </a>
+              </div>
             </div>
           </div>
           </Animated>
