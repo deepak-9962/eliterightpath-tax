@@ -192,11 +192,13 @@ export default function HomePage() {
                 style={{
                   fontFamily: "Sora, sans-serif",
                   fontWeight: 800,
-                  fontSize: "clamp(34px, 4.6vw, 54px)",
+                  fontSize: "clamp(26px, 6vw, 54px)",
                   color: "#FFFFFF",
-                  lineHeight: 1.15,
+                  lineHeight: 1.18,
                   marginBottom: "18px",
                   letterSpacing: "-0.8px",
+                  wordBreak: "break-word",
+                  overflowWrap: "break-word",
                 }}
               >
                 GST & Tax Solutions <br />
@@ -221,9 +223,10 @@ export default function HomePage() {
                   lineHeight: 1.75,
                   marginBottom: "34px",
                   maxWidth: "540px",
+                  width: "100%",
                 }}
               >
-                Expert income tax filing, GST compliance, bookkeeping, and business registrations. Guided personally by Mr. Raj Paudel to keep your tax and business compliance accurate, timely, and audit-ready.
+                Expert in income tax filing, GST Registration and Compliance, bookkeeping, and business registrations. Guided personally by Mr. Raj Paudel to keep your tax and business compliance accurate, timely, and audit-ready.
               </p>
             </Animated>
 
@@ -253,7 +256,7 @@ export default function HomePage() {
                   Book Free Consultation <ArrowRight size={16} />
                 </Link>
                 <a
-                  href="https://wa.me/919360044152?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
+                  href="https://wa.me/919940243827?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-fintech-secondary"
@@ -321,8 +324,11 @@ export default function HomePage() {
 
                 <div style={{ width: "1px", height: "28px", background: "rgba(255, 255, 255, 0.1)" }} className="cred-divider" />
 
-                <div>
-                  <div style={{ fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: "15px", color: "#A855F7" }}>
+                <div style={{ minWidth: 0 }}>
+                  <div
+                    className="hero-cred-hours"
+                    style={{ fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: "15px", color: "#A855F7" }}
+                  >
                     10:00 AM – 9:00 PM
                   </div>
                   <div style={{ fontSize: "11px", color: "rgba(255, 255, 255, 0.5)", fontWeight: 500 }}>
@@ -331,10 +337,60 @@ export default function HomePage() {
                 </div>
               </div>
             </Animated>
+
+            {/* Brand Signature Slogan */}
+            <Animated variant="fadeUp" delay={600}>
+              <div
+                className="hero-slogan-wrap"
+                style={{
+                  marginTop: "20px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  maxWidth: "540px",
+                }}
+              >
+                <span
+                  style={{
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    background: "linear-gradient(135deg, #A855F7, #D946EF)",
+                    boxShadow: "0 0 8px rgba(217, 70, 239, 0.6)",
+                    flexShrink: 0,
+                  }}
+                  aria-hidden="true"
+                />
+                <p
+                  className="hero-slogan-text"
+                  style={{
+                    fontFamily: "Sora, sans-serif",
+                    fontWeight: 600,
+                    fontSize: "clamp(16px, 1.6vw, 19px)",
+                    letterSpacing: "0.25px",
+                    margin: 0,
+                    lineHeight: 1.45,
+                  }}
+                >
+                  <span style={{ color: "#EDE9FE" }}>Your Tax,</span>{" "}
+                  <span
+                    style={{
+                      background: "linear-gradient(135deg, #A855F7 0%, #D946EF 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      fontWeight: 700,
+                    }}
+                  >
+                    Our Right Path
+                  </span>
+                </p>
+              </div>
+            </Animated>
           </div>
 
-          {/* Right Column: Financial Workspace Showcase Visual */}
-          <Animated variant="scaleIn" delay={300}>
+          {/* Right Column: Hero Portrait with Ambient Glow & Floating Proof Cards */}
+          <Animated variant="fadeUp" delay={300}>
             <div
               className="hero-right"
               style={{
@@ -353,16 +409,36 @@ export default function HomePage() {
         <style>{`
           @media (max-width: 1024px) {
             .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; text-align: center; }
-            .hero-right { margin-top: 20px; }
+            .hero-right { margin-top: 20px; width: 100%; max-width: 100%; }
             .hero-cta-row { justify-content: center; }
             .hero-credentials-bar { margin: 0 auto; justify-content: center; }
+            .hero-slogan-wrap { margin: 20px auto 0 !important; justify-content: center !important; }
           }
           @media (max-width: 768px) {
-            .hero-section { padding-top: 100px !important; padding-bottom: 60px !important; }
-            .hero-credentials-bar { display: grid !important; grid-template-columns: repeat(2, 1fr) !important; text-align: center; }
+            .hero-section { padding-top: 96px !important; padding-bottom: 50px !important; }
+            .hero-grid { padding: 0 16px !important; width: 100% !important; max-width: 100% !important; }
+            .hero-credentials-bar {
+              display: grid !important;
+              grid-template-columns: repeat(2, 1fr) !important;
+              text-align: center;
+              width: 100% !important;
+              max-width: 100% !important;
+              padding: 14px 12px !important;
+              gap: 12px 8px !important;
+            }
             .cred-divider { display: none !important; }
-            .hero-cta-row { flex-direction: column; align-items: center; }
+            .hero-cta-row { flex-direction: column; align-items: center; width: 100%; }
             .hero-cta-row > * { width: 100%; max-width: 320px; justify-content: center; text-align: center; }
+          }
+          @media (max-width: 480px) {
+            .hero-credentials-bar {
+              padding: 12px 8px !important;
+              gap: 10px 4px !important;
+            }
+            .hero-cred-hours {
+              font-size: 13px !important;
+              white-space: nowrap;
+            }
           }
         `}</style>
       </section>
@@ -743,6 +819,7 @@ export default function HomePage() {
                 title: "Business Registration",
                 descriptor: "Proprietorship · Partnership · LLP · Company",
                 desc: "Business formation and registration support, including MSME, Shop Act, and professional licensing.",
+                covers: "MSME · Shop Act · Entity Setup",
                 anchor: "business-registration",
               },
               {
@@ -751,6 +828,7 @@ export default function HomePage() {
                 title: "Book Keeping",
                 descriptor: "Ledger · Invoicing · Reconciliation",
                 desc: "Daily ledger posting, voucher entry, bank reconciliations, invoicing, and expense tracking.",
+                covers: "Ledger · Bank Reconciliation · Invoicing",
                 anchor: "bookkeeping",
               },
               {
@@ -759,6 +837,7 @@ export default function HomePage() {
                 title: "Accounts Maintenance",
                 descriptor: "Ledger · Closing · MIS",
                 desc: "Periodic maintenance, monthly closing, P&L, balance sheet preparation, payroll, and MIS reports.",
+                covers: "P&L · Balance Sheet · MIS Reports",
                 anchor: "accounts-maintenance",
               },
               {
@@ -767,6 +846,7 @@ export default function HomePage() {
                 title: "Compliance & Legal",
                 descriptor: "ROC · Statutory Compliance · Labour",
                 desc: "ROC annual filings, statutory register maintenance, labour law compliance, and corporate advisory.",
+                covers: "ROC Filings · AOC-4 · MGT-7 · Labour",
                 anchor: "compliance",
               },
               {
@@ -775,6 +855,7 @@ export default function HomePage() {
                 title: "Audit Support",
                 descriptor: "Audit Preparation · Internal Controls",
                 desc: "Statutory audit support, internal controls review, and balance sheet audit readiness.",
+                covers: "Statutory Audit · Controls · Readiness",
                 anchor: "audit",
               },
               {
@@ -783,51 +864,53 @@ export default function HomePage() {
                 title: "Financial Advisory",
                 descriptor: "Tax Planning · Cash Flow · Growth",
                 desc: "Strategic tax planning, business cash flow management, capital structuring, and growth guidance.",
+                covers: "Tax Planning · Cash Flow · Capital",
                 anchor: "financial-advisory",
               },
-            ].map(({ num, Icon, title, descriptor, desc, anchor }, idx) => (
+            ].map(({ num, Icon, title, descriptor, desc, covers, anchor }, idx) => (
               <Animated key={anchor} variant="fadeUp" delay={80 + idx * 60}>
                 <Link href={`/services#${anchor}`} style={{ textDecoration: "none", display: "block", height: "100%" }}>
                   <div
                     className="svc-supporting-card"
                     style={{
                       background: "#FFFFFF",
-                      border: "1px solid rgba(124, 58, 237, 0.11)",
-                      borderRadius: "18px",
-                      padding: "28px 26px 24px",
+                      border: "1px solid rgba(124, 58, 237, 0.10)",
+                      borderRadius: "16px",
+                      padding: "22px 22px 20px",
                       height: "100%",
                       display: "flex",
                       flexDirection: "column",
-                      boxShadow: "0 2px 16px rgba(30, 20, 60, 0.04)",
+                      boxShadow: "0 2px 12px rgba(30, 20, 60, 0.04)",
                       transition: "transform 0.2s ease-out, border-color 0.2s ease-out, box-shadow 0.2s ease-out",
                       cursor: "pointer",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = "translateY(-3px)";
-                      e.currentTarget.style.borderColor = "rgba(124, 58, 237, 0.28)";
-                      e.currentTarget.style.boxShadow = "0 10px 28px rgba(124, 58, 237, 0.08)";
+                      e.currentTarget.style.borderColor = "rgba(124, 58, 237, 0.30)";
+                      e.currentTarget.style.boxShadow = "0 10px 24px rgba(124, 58, 237, 0.08)";
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.transform = "translateY(0)";
-                      e.currentTarget.style.borderColor = "rgba(124, 58, 237, 0.11)";
-                      e.currentTarget.style.boxShadow = "0 2px 16px rgba(30, 20, 60, 0.04)";
+                      e.currentTarget.style.borderColor = "rgba(124, 58, 237, 0.10)";
+                      e.currentTarget.style.boxShadow = "0 2px 12px rgba(30, 20, 60, 0.04)";
                     }}
                   >
                     {/* Number + Icon */}
-                    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "14px" }}>
+                    <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: "10px" }}>
                       <span
                         style={{
                           fontFamily: "Sora, sans-serif",
-                          fontWeight: 800,
-                          fontSize: "12px",
+                          fontWeight: 700,
+                          fontSize: "11.5px",
                           color: "#7C3AED",
-                          letterSpacing: "0.5px",
-                          opacity: 0.6,
+                          letterSpacing: "0.4px",
+                          opacity: 0.65,
+                          lineHeight: 1,
                         }}
                       >
                         {num}
                       </span>
-                      <Icon size={16} color="#7C3AED" strokeWidth={1.6} style={{ opacity: 0.45 }} />
+                      <Icon size={14} color="#A855F7" strokeWidth={1.6} style={{ opacity: 0.5, marginTop: "1px" }} />
                     </div>
 
                     {/* Title */}
@@ -835,9 +918,9 @@ export default function HomePage() {
                       style={{
                         fontFamily: "Sora, sans-serif",
                         fontWeight: 700,
-                        fontSize: "16px",
+                        fontSize: "15.5px",
                         color: "#111827",
-                        marginBottom: "5px",
+                        marginBottom: "4px",
                         lineHeight: 1.25,
                       }}
                     >
@@ -847,21 +930,36 @@ export default function HomePage() {
                     {/* Descriptor */}
                     <p
                       style={{
-                        fontSize: "11px",
+                        fontSize: "10.5px",
                         fontWeight: 600,
                         color: "#A855F7",
-                        letterSpacing: "0.5px",
+                        letterSpacing: "0.45px",
                         textTransform: "uppercase",
                         fontFamily: "Sora, sans-serif",
-                        marginBottom: "12px",
+                        marginBottom: "10px",
+                        opacity: 0.85,
                       }}
                     >
                       {descriptor}
                     </p>
 
                     {/* Description */}
-                    <p style={{ fontSize: "13.5px", color: "#64748B", lineHeight: 1.65, marginBottom: "20px", flexGrow: 1 }}>
+                    <p style={{ fontSize: "13px", color: "#64748B", lineHeight: 1.62, marginBottom: "10px" }}>
                       {desc}
+                    </p>
+
+                    {/* Covers line */}
+                    <p
+                      style={{
+                        fontSize: "10.5px",
+                        fontWeight: 600,
+                        color: "#94A3B8",
+                        letterSpacing: "0.3px",
+                        fontFamily: "Sora, sans-serif",
+                        marginBottom: "16px",
+                      }}
+                    >
+                      <span style={{ color: "#CBD5E1", fontWeight: 500 }}>Covers: </span>{covers}
                     </p>
 
                     {/* CTA */}
@@ -872,14 +970,15 @@ export default function HomePage() {
                         gap: "5px",
                         color: "#7C3AED",
                         fontWeight: 700,
-                        fontSize: "12.5px",
+                        fontSize: "12px",
                         fontFamily: "Sora, sans-serif",
                         borderTop: "1px solid rgba(124, 58, 237, 0.07)",
-                        paddingTop: "14px",
+                        paddingTop: "12px",
+                        marginTop: "auto",
                       }}
                       className="svc-cta-arrow"
                     >
-                      Explore <ArrowRight size={12} />
+                      Explore <ArrowRight size={11} />
                     </div>
                   </div>
                 </Link>
@@ -938,10 +1037,10 @@ export default function HomePage() {
                   onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#6D28D9"; }}
                   onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "#7C3AED"; }}
                 >
-                  Talk to Raj <ArrowRight size={14} />
+                  Talk to Us <ArrowRight size={14} />
                 </Link>
                 <a
-                  href="https://wa.me/919360044152?text=Hi%2C%20I%27d%20like%20to%20understand%20which%20service%20suits%20my%20business"
+                  href="https://wa.me/919940243827?text=Hi%2C%20I%27d%20like%20to%20understand%20which%20service%20suits%20my%20business"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -1038,7 +1137,7 @@ export default function HomePage() {
                     }}
                   >
                     <Image
-                      src="/raj-paudel.png"
+                      src="/raj-paudel.jpeg"
                       alt="Raj Paudel — Proprietor & Tax Consultant, Elite Right Path"
                       fill
                       style={{
@@ -1676,7 +1775,7 @@ export default function HomePage() {
                 Book Free Consultation <ArrowRight size={16} />
               </Link>
               <a
-                href="https://wa.me/919360044152?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
+                href="https://wa.me/919940243827?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

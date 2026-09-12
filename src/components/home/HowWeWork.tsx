@@ -8,31 +8,37 @@ const steps = [
     step: "01",
     icon: MessageSquareText,
     title: "Tell Us What You Need",
-    desc: "We start with a direct consultation to understand your income profile, business transactions, or registration needs.",
+    desc: "A direct consultation to understand your income profile, business transactions, or registration requirements.",
+    meta: "ITR · GST · Registration",
   },
   {
     step: "02",
     icon: FileSearch,
-    title: "We Scrutinize Your Records",
-    desc: "We review Form 16, invoices, bank statements, and 26AS/AIS records to ensure every credit and deduction is captured.",
+    title: "We Review Your Records",
+    desc: "We go through Form 16, invoices, bank statements, and 26AS / AIS data — so every credit and deduction is captured.",
+    meta: "Documents · Bank Statements · 26AS",
   },
   {
     step: "03",
     icon: Calculator,
     title: "We Prepare Calculations",
-    desc: "Our team drafts your exact tax computations or GST filings, ensuring 100% statutory compliance and zero omissions.",
+    desc: "Exact tax computations or GST filings are drafted and checked for accuracy before any submission.",
+    meta: "Tax / GST Computation · Reconciliation",
+    isFocal: true,
   },
   {
     step: "04",
     icon: CheckCheck,
-    title: "We Verify Everything With You",
-    desc: "Before any portal submission, you receive a transparent walk-through of the return draft so you are always in total control.",
+    title: "We Verify With You",
+    desc: "You receive a clear walk-through of the return draft — so you understand what is being filed and why.",
+    meta: "Draft Review · Client Sign-off",
   },
   {
     step: "05",
     icon: ShieldCheck,
-    title: "Filing & Year-Round Support",
-    desc: "We submit to the official portals, hand over government acknowledgments, track refunds, and stand by you for any notices.",
+    title: "Filing & Ongoing Support",
+    desc: "We submit to the official portals, share acknowledgments, and remain available for any follow-up or notices.",
+    meta: "Portal Filing · Acknowledgments · Support",
   },
 ];
 
@@ -41,14 +47,16 @@ export default function HowWeWork() {
     <section
       style={{
         background: "#FAF7FF",
-        padding: "88px 0",
+        padding: "88px 0 80px",
         position: "relative",
       }}
       className="ledger-grid-bg"
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+
+        {/* Section header */}
         <Animated variant="fadeUp">
-          <div style={{ textAlign: "center", marginBottom: "52px" }}>
+          <div style={{ textAlign: "center", marginBottom: "56px" }}>
             <div
               style={{
                 display: "inline-flex",
@@ -58,9 +66,9 @@ export default function HowWeWork() {
                 color: "#7C3AED",
                 padding: "6px 16px",
                 borderRadius: "50px",
-                fontSize: "12px",
+                fontSize: "11px",
                 fontWeight: 700,
-                letterSpacing: "0.8px",
+                letterSpacing: "0.9px",
                 textTransform: "uppercase",
                 fontFamily: "Sora, sans-serif",
                 marginBottom: "14px",
@@ -74,7 +82,7 @@ export default function HowWeWork() {
                 fontWeight: 800,
                 fontSize: "clamp(26px, 3.8vw, 42px)",
                 color: "#111827",
-                marginBottom: "14px",
+                marginBottom: "12px",
                 lineHeight: 1.2,
               }}
             >
@@ -92,111 +100,315 @@ export default function HowWeWork() {
             </h2>
             <p
               style={{
-                fontSize: "15.5px",
+                fontSize: "15px",
                 color: "#64748B",
-                maxWidth: "600px",
+                maxWidth: "560px",
                 margin: "0 auto",
                 lineHeight: 1.7,
               }}
             >
-              A straightforward, transparent 5-step advisory journey designed to keep your business penalty-free and fully compliant.
+              A straightforward, transparent 5-step advisory journey — designed to keep your filings accurate and on time.
             </p>
           </div>
         </Animated>
 
-        {/* 5-step horizontal flow */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(210px, 1fr))",
-            gap: "20px",
-            position: "relative",
-          }}
-          className="process-grid"
-        >
-          {steps.map(({ step, icon: Icon, title, desc }, idx) => (
-            <Animated key={step} variant="fadeUp" delay={idx * 100}>
-              <div
-                style={{
-                  background: "#FFFFFF",
-                  border: "1px solid rgba(124, 58, 237, 0.12)",
-                  borderRadius: "18px",
-                  padding: "26px 20px",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  position: "relative",
-                  boxShadow: "0 4px 16px rgba(11, 6, 20, 0.03)",
-                  transition: "all 0.3s ease",
-                }}
-                className="process-step-card"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-4px)";
-                  e.currentTarget.style.borderColor = "rgba(124, 58, 237, 0.3)";
-                  e.currentTarget.style.boxShadow = "0 12px 28px rgba(124, 58, 237, 0.08)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.borderColor = "rgba(124, 58, 237, 0.12)";
-                  e.currentTarget.style.boxShadow = "0 4px 16px rgba(11, 6, 20, 0.03)";
-                }}
-              >
-                {/* Step indicator & Icon */}
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "16px" }}>
-                  <span
-                    style={{
-                      fontFamily: "Sora, sans-serif",
-                      fontWeight: 800,
-                      fontSize: "20px",
-                      color: "#A855F7",
-                      opacity: 0.85,
-                    }}
-                  >
-                    {step}
-                  </span>
-                  <div
-                    style={{
-                      width: "38px",
-                      height: "38px",
-                      borderRadius: "10px",
-                      background: "rgba(124, 58, 237, 0.08)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "#7C3AED",
-                    }}
-                  >
-                    <Icon size={18} />
+        {/* Desktop horizontal timeline */}
+        <div className="hww-desktop">
+          <div className="hww-track-wrap" aria-hidden="true">
+            <div className="hww-track-line" />
+          </div>
+          <div className="hww-steps-row" role="list">
+            {steps.map(({ step, icon: Icon, title, desc, meta, isFocal }, idx) => (
+              <Animated key={step} variant="fadeUp" delay={idx * 90}>
+                <div
+                  className={`hww-step${isFocal ? " hww-step--focal" : ""}`}
+                  role="listitem"
+                >
+                  <div className="hww-dot-wrap">
+                    <div className={`hww-dot${isFocal ? " hww-dot--focal" : ""}`}>
+                      <Icon size={13} strokeWidth={1.8} />
+                    </div>
+                    <span className={`hww-step-num${isFocal ? " hww-step-num--focal" : ""}`}>
+                      {step}
+                    </span>
+                  </div>
+                  <div className="hww-step-body">
+                    <h3 className={`hww-step-title${isFocal ? " hww-step-title--focal" : ""}`}>
+                      {title}
+                    </h3>
+                    <p className="hww-step-desc">{desc}</p>
+                    <p className="hww-step-meta">{meta}</p>
                   </div>
                 </div>
+              </Animated>
+            ))}
+          </div>
+        </div>
 
-                <h3
-                  style={{
-                    fontFamily: "Sora, sans-serif",
-                    fontWeight: 700,
-                    fontSize: "15.5px",
-                    color: "#111827",
-                    marginBottom: "10px",
-                    lineHeight: 1.35,
-                  }}
-                >
-                  {title}
-                </h3>
-                <p
-                  style={{
-                    fontSize: "13px",
-                    color: "#64748B",
-                    lineHeight: 1.6,
-                    margin: 0,
-                  }}
-                >
-                  {desc}
-                </p>
+        {/* Mobile vertical timeline */}
+        <div className="hww-mobile" role="list">
+          {steps.map(({ step, icon: Icon, title, desc, meta, isFocal }, idx) => (
+            <Animated key={`m-${step}`} variant="fadeUp" delay={idx * 80}>
+              <div className="hww-mobile-step" role="listitem">
+                <div className="hww-mobile-left">
+                  <div className={`hww-mobile-dot${isFocal ? " hww-mobile-dot--focal" : ""}`}>
+                    <Icon size={12} strokeWidth={1.8} />
+                  </div>
+                  {idx < steps.length - 1 && <div className="hww-mobile-vline" />}
+                </div>
+                <div className="hww-mobile-body">
+                  <span className={`hww-mobile-num${isFocal ? " hww-mobile-num--focal" : ""}`}>
+                    {step}
+                  </span>
+                  <h3 className={`hww-mobile-title${isFocal ? " hww-mobile-title--focal" : ""}`}>
+                    {title}
+                  </h3>
+                  <p className="hww-mobile-desc">{desc}</p>
+                  <p className="hww-mobile-meta">{meta}</p>
+                </div>
               </div>
             </Animated>
           ))}
         </div>
       </div>
+
+      <style>{`
+        /* DESKTOP */
+        .hww-desktop { display: block; position: relative; }
+        .hww-mobile  { display: none; }
+
+        .hww-track-wrap {
+          position: absolute;
+          top: 20px;
+          left: calc(24px + 10%);
+          right: calc(24px + 10%);
+          height: 1px;
+          pointer-events: none;
+          z-index: 0;
+        }
+        .hww-track-line {
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(
+            90deg,
+            transparent 0%,
+            #C4B5FD 8%,
+            #A855F7 30%,
+            #7C3AED 50%,
+            #A855F7 70%,
+            #C4B5FD 92%,
+            transparent 100%
+          );
+          opacity: 0.4;
+        }
+
+        .hww-steps-row {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 0;
+          position: relative;
+          z-index: 1;
+        }
+
+        .hww-step {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 8px;
+          text-align: center;
+        }
+
+        .hww-dot-wrap {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          margin-bottom: 20px;
+        }
+
+        .hww-dot {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: #FFFFFF;
+          border: 1.5px solid rgba(124, 58, 237, 0.28);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #7C3AED;
+          box-shadow: 0 2px 8px rgba(124, 58, 237, 0.09);
+          position: relative;
+          z-index: 2;
+          flex-shrink: 0;
+        }
+        .hww-dot--focal {
+          background: #7C3AED;
+          border-color: #7C3AED;
+          color: #FFFFFF;
+          box-shadow: 0 4px 16px rgba(124, 58, 237, 0.28);
+          width: 44px;
+          height: 44px;
+          margin-top: -2px;
+        }
+
+        .hww-step-num {
+          font-family: Sora, sans-serif;
+          font-weight: 700;
+          font-size: 11px;
+          color: #A855F7;
+          letter-spacing: 0.5px;
+          opacity: 0.65;
+        }
+        .hww-step-num--focal {
+          color: #7C3AED;
+          opacity: 1;
+          font-weight: 800;
+        }
+
+        .hww-step-body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 5px;
+        }
+
+        .hww-step-title {
+          font-family: Sora, sans-serif;
+          font-weight: 700;
+          font-size: 13px;
+          color: #111827;
+          line-height: 1.35;
+          margin: 0;
+        }
+        .hww-step-title--focal {
+          color: #6D28D9;
+          font-weight: 800;
+        }
+
+        .hww-step-desc {
+          font-size: 12px;
+          color: #64748B;
+          line-height: 1.6;
+          margin: 0;
+        }
+
+        .hww-step-meta {
+          font-family: Sora, sans-serif;
+          font-size: 9.5px;
+          font-weight: 600;
+          color: #A855F7;
+          letter-spacing: 0.4px;
+          text-transform: uppercase;
+          margin: 0;
+          opacity: 0.7;
+        }
+
+        .hww-step--focal .hww-step-body {
+          background: rgba(124, 58, 237, 0.04);
+          border: 1px solid rgba(124, 58, 237, 0.10);
+          border-radius: 14px;
+          padding: 14px 10px;
+          margin-top: -2px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 860px) {
+          .hww-desktop { display: none; }
+          .hww-mobile  { display: block; }
+        }
+
+        .hww-mobile-step {
+          display: flex;
+          gap: 16px;
+        }
+
+        .hww-mobile-left {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          flex-shrink: 0;
+          width: 36px;
+        }
+
+        .hww-mobile-dot {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: #FFFFFF;
+          border: 1.5px solid rgba(124, 58, 237, 0.26);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #7C3AED;
+          flex-shrink: 0;
+          box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
+        }
+        .hww-mobile-dot--focal {
+          background: #7C3AED;
+          border-color: #7C3AED;
+          color: #FFFFFF;
+          box-shadow: 0 4px 14px rgba(124, 58, 237, 0.24);
+        }
+
+        .hww-mobile-vline {
+          width: 1px;
+          flex-grow: 1;
+          min-height: 28px;
+          background: linear-gradient(to bottom, rgba(124, 58, 237, 0.28), rgba(124, 58, 237, 0.07));
+          margin: 5px 0;
+        }
+
+        .hww-mobile-body {
+          padding-bottom: 26px;
+          flex: 1;
+        }
+
+        .hww-mobile-num {
+          font-family: Sora, sans-serif;
+          font-size: 10px;
+          font-weight: 700;
+          color: #A855F7;
+          letter-spacing: 0.5px;
+          display: block;
+          margin-bottom: 2px;
+          opacity: 0.68;
+        }
+        .hww-mobile-num--focal { color: #7C3AED; opacity: 1; }
+
+        .hww-mobile-title {
+          font-family: Sora, sans-serif;
+          font-weight: 700;
+          font-size: 15px;
+          color: #111827;
+          line-height: 1.3;
+          margin: 0 0 5px;
+        }
+        .hww-mobile-title--focal { color: #6D28D9; font-weight: 800; }
+
+        .hww-mobile-desc {
+          font-size: 13.5px;
+          color: #64748B;
+          line-height: 1.65;
+          margin: 0 0 5px;
+        }
+
+        .hww-mobile-meta {
+          font-family: Sora, sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          color: #A855F7;
+          letter-spacing: 0.4px;
+          text-transform: uppercase;
+          margin: 0;
+          opacity: 0.7;
+        }
+
+        @media (max-width: 480px) {
+          .hww-mobile-body { padding-bottom: 20px; }
+          .hww-mobile-title { font-size: 14px; }
+          .hww-mobile-desc  { font-size: 13px; }
+        }
+      `}</style>
     </section>
   );
 }

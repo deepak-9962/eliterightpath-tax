@@ -101,6 +101,13 @@ export default function HeroProfileVisual() {
           .hpv-mobile-grid   { display: none !important; }
         }
 
+        @media (max-width: 480px) {
+          .hpv-portrait-frame {
+            width: min(320px, calc(100vw - 32px)) !important;
+            height: min(400px, calc((100vw - 32px) * 1.25)) !important;
+          }
+        }
+
         @media (prefers-reduced-motion: reduce) {
           .hpv-card { animation: none !important; }
         }
@@ -116,6 +123,8 @@ export default function HeroProfileVisual() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          width: "100%",
+          maxWidth: "100%",
         }}
       >
         {/* ── Very subtle warm-purple depth glow behind the portrait ── */}
@@ -126,8 +135,8 @@ export default function HeroProfileVisual() {
             top: "20%",
             left: "50%",
             transform: "translateX(-50%)",
-            width: "340px",
-            height: "340px",
+            width: "min(340px, 90vw)",
+            height: "min(340px, 90vw)",
             borderRadius: "50%",
             background:
               "radial-gradient(circle, rgba(124, 58, 237, 0.10) 0%, transparent 70%)",
@@ -143,10 +152,12 @@ export default function HeroProfileVisual() {
           overflow:visible on this outer div lets cards bleed outside the frame.
         */}
         <div
+          className="hpv-portrait-frame"
           style={{
             position: "relative",
             width: "370px",
             height: "460px",
+            maxWidth: "100%",
             zIndex: 2,
           }}
         >
@@ -164,7 +175,7 @@ export default function HeroProfileVisual() {
             }}
           >
             <Image
-              src="/raj-paudel.png"
+              src="/raj-paudel.jpeg"
               alt="Mr. Raj Paudel — Tax Consultant, Elite Right Path"
               fill
               priority

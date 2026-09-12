@@ -254,7 +254,7 @@ export default function FAQsPage() {
           </p>
           <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
             <a
-              href="https://wa.me/919360044152?text=Hi%2C%20I%20have%20a%20tax%20question%20for%20you"
+              href="https://wa.me/919940243827?text=Hi%2C%20I%20have%20a%20tax%20question%20for%20you"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-orchid"
@@ -262,7 +262,7 @@ export default function FAQsPage() {
             >
               <MessageCircle size={14} /> Ask on WhatsApp
             </a>
-            <a href="tel:+919360044152" className="btn-outline" style={{ textDecoration: "none" }}>
+            <a href="tel:+919940243827" className="btn-outline" style={{ textDecoration: "none" }}>
               <Phone size={14} /> Call Us
             </a>
           </div>

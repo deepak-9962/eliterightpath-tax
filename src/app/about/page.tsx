@@ -42,7 +42,7 @@ const processSteps = [
 
 const firmInfo = [
   { icon: Shield, label: "GSTIN", value: "33GAGPR3616R1Z2" },
-  { icon: Phone, label: "Phone & WhatsApp", value: "+91 93600 44152" },
+  { icon: Phone, label: "Phone & WhatsApp", value: "+91 99402 43827" },
   { icon: MapPin, label: "Office", value: "Mogappair, Chennai" },
   { icon: MapPin, label: "Service Area", value: "Tamil Nadu & Pan India (Online)" },
   { icon: Clock, label: "Business Hours", value: "Mon – Sat: 10:00 AM – 9:00 PM" },
@@ -196,7 +196,7 @@ export default function AboutPage() {
                     }}
                   >
                     <Image
-                      src="/raj-paudel.png"
+                      src="/raj-paudel.jpeg"
                       alt="Raj Paudel — Proprietor & Tax Consultant, Elite Right Path"
                       fill
                       style={{ objectFit: "cover", objectPosition: "top center" }}
@@ -286,7 +286,7 @@ export default function AboutPage() {
                     Get in Touch <ArrowRight size={15} />
                   </Link>
                   <a
-                    href="tel:+919360044152"
+                    href="tel:+919940243827"
                     style={{
                       display: "inline-flex",
                       alignItems: "center",
@@ -431,7 +431,7 @@ export default function AboutPage() {
                     }}
                   >
                     <Image
-                      src="/raj-paudel.png"
+                      src="/raj-paudel.jpeg"
                       alt="Raj Paudel — Proprietor & Tax Consultant, Elite Right Path"
                       fill
                       style={{ objectFit: "cover", objectPosition: "top center" }}
@@ -622,7 +622,7 @@ export default function AboutPage() {
                 }}
               >
                 <Image
-                  src="/raj-paudel.png"
+                  src="/raj.jpeg"
                   alt="Raj Paudel — Proprietor & Tax Consultant"
                   fill
                   style={{ objectFit: "cover", objectPosition: "top center" }}
@@ -909,7 +909,7 @@ export default function AboutPage() {
                 Book a Consultation <ArrowRight size={16} />
               </Link>
               <a
-                href="https://wa.me/919360044152?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
+                href="https://wa.me/919940243827?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

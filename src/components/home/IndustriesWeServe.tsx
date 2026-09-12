@@ -24,19 +24,19 @@ const industries: IndustryItem[] = [
   {
     id: "business-services",
     name: "Business & Professional Services",
-    desc: "Tax planning, bookkeeping, and statutory compliance support for consultancies and service firms.",
+    desc: "Tax planning, bookkeeping, and statutory compliance for consultancies and service firms.",
     icon: Briefcase,
   },
   {
     id: "healthcare",
     name: "Healthcare & Medical",
-    desc: "Financial accounting and tax filing support for clinics, medical practitioners, and healthcare providers.",
+    desc: "Financial accounting and tax filing for clinics, medical practitioners, and healthcare providers.",
     icon: HeartPulse,
   },
   {
     id: "manufacturing",
     name: "Manufacturing & Engineering",
-    desc: "GST reconciliation, inventory bookkeeping, and audit readiness for manufacturing businesses.",
+    desc: "GST reconciliation, inventory bookkeeping, and audit readiness for manufacturers.",
     icon: Factory,
   },
   {
@@ -48,13 +48,13 @@ const industries: IndustryItem[] = [
   {
     id: "food-hospitality",
     name: "Food & Hospitality",
-    desc: "GST compliance, FSSAI registration guidance, and bookkeeping for restaurants, cafes, and caterers.",
+    desc: "GST compliance, FSSAI registration guidance, and bookkeeping for restaurants and caterers.",
     icon: UtensilsCrossed,
   },
   {
     id: "consumer-goods",
     name: "Consumer Goods & Retail",
-    desc: "Point-of-sale GST returns, trade compliance, and inventory ledger maintenance for retailers.",
+    desc: "POS GST returns, trade compliance, and inventory ledger maintenance for retailers.",
     icon: ShoppingBag,
   },
   {
@@ -76,23 +76,18 @@ export default function IndustriesWeServe() {
     <section
       style={{
         background: "#FFFFFF",
-        padding: "88px 0 92px",
+        padding: "64px 0 68px",
         position: "relative",
         borderTop: "1px solid rgba(124, 58, 237, 0.08)",
         borderBottom: "1px solid rgba(124, 58, 237, 0.08)",
       }}
       aria-labelledby="industries-heading"
     >
-      <div
-        style={{
-          maxWidth: "1280px",
-          margin: "0 auto",
-          padding: "0 24px",
-        }}
-      >
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 24px" }}>
+
         {/* Section Header */}
         <Animated variant="fadeUp">
-          <div style={{ textAlign: "center", marginBottom: "48px" }}>
+          <div style={{ textAlign: "center", marginBottom: "36px" }}>
             <div
               style={{
                 display: "inline-flex",
@@ -107,7 +102,7 @@ export default function IndustriesWeServe() {
                 letterSpacing: "1px",
                 textTransform: "uppercase",
                 fontFamily: "Sora, sans-serif",
-                marginBottom: "16px",
+                marginBottom: "14px",
               }}
             >
               Industries We Serve
@@ -117,11 +112,11 @@ export default function IndustriesWeServe() {
               style={{
                 fontFamily: "Sora, sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(24px, 3.4vw, 38px)",
+                fontSize: "clamp(22px, 3vw, 34px)",
                 color: "#111827",
                 lineHeight: 1.2,
-                marginBottom: "14px",
-                letterSpacing: "-0.4px",
+                marginBottom: "10px",
+                letterSpacing: "-0.3px",
               }}
             >
               Supporting Businesses Across{" "}
@@ -138,11 +133,11 @@ export default function IndustriesWeServe() {
             </h2>
             <p
               style={{
-                fontSize: "15px",
+                fontSize: "14.5px",
                 color: "#64748B",
-                maxWidth: "620px",
+                maxWidth: "560px",
                 margin: "0 auto",
-                lineHeight: 1.7,
+                lineHeight: 1.65,
               }}
             >
               Tax, GST, accounting and compliance support tailored to the needs of different industries and business environments.
@@ -156,82 +151,83 @@ export default function IndustriesWeServe() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "20px",
-            marginBottom: "36px",
+            gap: "14px",
+            marginBottom: "24px",
           }}
         >
           {industries.map((item, idx) => {
             const { icon: Icon } = item;
             return (
-              <Animated key={item.id} variant="fadeUp" delay={60 + idx * 40}>
+              <Animated key={item.id} variant="fadeUp" delay={50 + idx * 35}>
                 <div
                   className="industry-tile"
                   style={{
-                    background: "#FFFFFF",
-                    border: "1px solid rgba(124, 58, 237, 0.12)",
-                    borderRadius: "16px",
-                    padding: "24px 22px",
-                    height: "100%",
+                    background: "#FAFAFA",
+                    border: "1px solid rgba(124, 58, 237, 0.10)",
+                    borderRadius: "14px",
+                    padding: "16px 18px",
                     display: "flex",
                     flexDirection: "column",
-                    boxShadow: "0 2px 12px rgba(11, 6, 20, 0.03)",
-                    transition: "transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease",
+                    gap: "8px",
+                    boxShadow: "0 1px 6px rgba(11, 6, 20, 0.03)",
+                    transition: "transform 0.18s ease-out, border-color 0.18s ease-out, box-shadow 0.18s ease-out, background 0.18s ease-out",
+                    cursor: "default",
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget;
                     el.style.transform = "translateY(-2px)";
-                    el.style.borderColor = "rgba(124, 58, 237, 0.28)";
-                    el.style.boxShadow = "0 8px 24px rgba(124, 58, 237, 0.07)";
-                    el.style.background = "rgba(124, 58, 237, 0.015)";
+                    el.style.borderColor = "rgba(124, 58, 237, 0.26)";
+                    el.style.boxShadow = "0 6px 20px rgba(124, 58, 237, 0.07)";
+                    el.style.background = "#FFFFFF";
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget;
                     el.style.transform = "translateY(0)";
-                    el.style.borderColor = "rgba(124, 58, 237, 0.12)";
-                    el.style.boxShadow = "0 2px 12px rgba(11, 6, 20, 0.03)";
-                    el.style.background = "#FFFFFF";
+                    el.style.borderColor = "rgba(124, 58, 237, 0.10)";
+                    el.style.boxShadow = "0 1px 6px rgba(11, 6, 20, 0.03)";
+                    el.style.background = "#FAFAFA";
                   }}
                 >
-                  {/* Icon Header */}
-                  <div
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      borderRadius: "10px",
-                      background: "rgba(124, 58, 237, 0.08)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginBottom: "16px",
-                      color: "#7C3AED",
-                      flexShrink: 0,
-                    }}
-                  >
-                    <Icon size={20} strokeWidth={1.8} />
+                  {/* Icon + Title row */}
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                    <div
+                      style={{
+                        width: "30px",
+                        height: "30px",
+                        borderRadius: "8px",
+                        background: "rgba(124, 58, 237, 0.08)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "#7C3AED",
+                        flexShrink: 0,
+                        marginTop: "1px",
+                      }}
+                    >
+                      <Icon size={15} strokeWidth={1.8} />
+                    </div>
+                    <h3
+                      style={{
+                        fontFamily: "Sora, sans-serif",
+                        fontWeight: 700,
+                        fontSize: "14px",
+                        color: "#111827",
+                        lineHeight: 1.3,
+                        margin: 0,
+                      }}
+                    >
+                      {item.name}
+                    </h3>
                   </div>
-
-                  {/* Industry Title */}
-                  <h3
-                    style={{
-                      fontFamily: "Sora, sans-serif",
-                      fontWeight: 700,
-                      fontSize: "15.5px",
-                      color: "#111827",
-                      marginBottom: "8px",
-                      lineHeight: 1.3,
-                    }}
-                  >
-                    {item.name}
-                  </h3>
 
                   {/* Short Descriptor */}
                   <p
                     style={{
-                      fontSize: "13.5px",
-                      color: "#64748B",
-                      lineHeight: 1.62,
+                      fontSize: "12.5px",
+                      color: "#6B7280",
+                      lineHeight: 1.58,
                       margin: 0,
-                      flexGrow: 1,
+                      paddingLeft: "40px",
                     }}
                   >
                     {item.desc}
@@ -242,36 +238,29 @@ export default function IndustriesWeServe() {
           })}
         </div>
 
-        {/* Subtle Bottom Note: Adapting approach + specialized regulatory areas */}
-        <Animated variant="fadeUp" delay={380}>
+        {/* Bottom Note */}
+        <Animated variant="fadeUp" delay={320}>
           <div
             style={{
-              padding: "16px 24px",
+              padding: "13px 20px",
               background: "rgba(124, 58, 237, 0.03)",
-              border: "1px dashed rgba(124, 58, 237, 0.18)",
-              borderRadius: "12px",
+              border: "1px dashed rgba(124, 58, 237, 0.16)",
+              borderRadius: "10px",
               textAlign: "center",
-              maxWidth: "840px",
+              maxWidth: "760px",
               margin: "0 auto",
             }}
           >
             <p
               style={{
-                fontSize: "13.5px",
+                fontSize: "13px",
                 color: "#4B5563",
                 margin: 0,
-                lineHeight: 1.6,
+                lineHeight: 1.55,
               }}
             >
-              Different businesses have different compliance needs. Our approach adapts to yours.
-              <span
-                style={{
-                  display: "inline-block",
-                  marginLeft: "8px",
-                  color: "#7C3AED",
-                  fontWeight: 600,
-                }}
-              >
+              Different businesses have different compliance needs. Our approach adapts to yours.{" "}
+              <span style={{ color: "#7C3AED", fontWeight: 600 }}>
                 Specialized advisory available for Legal Metrology &amp; regulatory compliance.
               </span>
             </p>
@@ -284,13 +273,13 @@ export default function IndustriesWeServe() {
         @media (max-width: 1024px) {
           .industries-grid {
             grid-template-columns: repeat(2, 1fr) !important;
-            gap: 16px !important;
+            gap: 12px !important;
           }
         }
-        @media (max-width: 600px) {
+        @media (max-width: 540px) {
           .industries-grid {
             grid-template-columns: 1fr !important;
-            gap: 14px !important;
+            gap: 10px !important;
           }
         }
       `}</style>

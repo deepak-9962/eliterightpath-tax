@@ -1,14 +1,32 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, MessageCircle, Phone, Award, BookOpen, Clock, Users, ArrowRight, ShieldCheck, FileText, Send, ChevronRight } from "lucide-react";
+import { Mail, MessageCircle, Phone, Award, BookOpen, Clock, Users, ArrowRight, ShieldCheck, FileText, Send, ChevronRight, ClipboardCheck } from "lucide-react";
 import Animated from "@/components/Animated";
 
+const CAREERS_EMAIL = "eliterightpathtax@gmail.com";
+
 const internRoles = [
+  {
+    title: "Stock Audit",
+    duration: "3 - 6 Months",
+    mode: "Audit Services",
+    icon: ClipboardCheck,
+    skills: [
+      "Physical Stock Verification",
+      "Stock Reconciliation",
+      "Discrepancy Reporting",
+      "Audit Support",
+      "Inventory Control",
+    ],
+    desc: "Help verify and reconcile physical stock with books, identify discrepancies, and support detailed audit reporting for accurate inventory and better financial control.",
+    color: "#7C3AED",
+  },
   {
     title: "Tax & GST Compliance Intern",
     duration: "3 - 6 Months",
     mode: "Hybrid / Remote",
+    icon: FileText,
     skills: ["TDS returns", "ITR filing assistance", "GST reconciliation", "Basic tax law"],
     desc: "Gain hands-on training preparing and filing GST returns, reconciling input tax credits, preparing ITR documents, and drafting responses to tax intimations under expert supervision.",
     color: "#A90DC8",
@@ -17,6 +35,7 @@ const internRoles = [
     title: "Accounting & Bookkeeping Intern",
     duration: "3 Months",
     mode: "Hybrid / In-Office",
+    icon: BookOpen,
     skills: ["Tally Prime", "Bank reconciliation", "Excel MIS sheets", "Voucher entry"],
     desc: "Work closely with clients' monthly financial transactions. Learn to categorize expenses, perform bank reconciliations, generate profit & loss statements, and draft basic MIS reports.",
     color: "#FDB515",
@@ -25,6 +44,7 @@ const internRoles = [
     title: "Business Registration & Corporate Law Intern",
     duration: "3 - 6 Months",
     mode: "Hybrid",
+    icon: ShieldCheck,
     skills: ["ROC compliance", "Company formation steps", "Partnership deed drafts", "MSME registrations"],
     desc: "Assist in drafting incorporation documents for proprietorships, partnerships, LLPs, and private limited companies. Research ROC guidelines and draft corporate compliance filings.",
     color: "#8A0AA3",
@@ -60,11 +80,47 @@ const benefits = [
 
 export default function CareersPage() {
   const handleEmailApply = (roleTitle: string) => {
-    const subject = encodeURIComponent(`Application for Internship: ${roleTitle}`);
-    const body = encodeURIComponent(
-      `Dear Mr. Raj Paudel,\n\nI would like to apply for the "${roleTitle}" position.\n\nHere are my details:\n- Full Name:\n- Mobile Number:\n- Current Qualification:\n- City/Location:\n\nPlease find attached my resume for your review.\n\nSincerely,\n[Your Name]`
-    );
-    window.location.href = `mailto:info@eliterightpath.com?subject=${subject}&body=${body}`;
+    let subject = `Application for Internship: ${roleTitle}`;
+    let body = `Dear Mr. Raj Paudel,\n\nI would like to apply for the "${roleTitle}" position.\n\nHere are my details:\n- Full Name:\n- Mobile Number:\n- Current Qualification:\n- City/Location:\n\nPlease find attached my resume for your review.\n\nSincerely,\n[Your Name]`;
+
+    if (roleTitle === "Stock Audit") {
+      subject = "Application for Stock Audit Role";
+      body = [
+        "Hello Elite Right Path,",
+        "",
+        "I am interested in applying for the Stock Audit role under Audit Services.",
+        "",
+        "Role:",
+        "Stock Audit",
+        "",
+        "Category:",
+        "Audit Services",
+        "",
+        "Please find my application details attached/provided below.",
+        "",
+        "Regards,",
+        "{Applicant Name}",
+      ].join("\n");
+    }
+
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(CAREERS_EMAIL)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoUrl = `mailto:${encodeURIComponent(CAREERS_EMAIL)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    try {
+      const win = window.open(gmailUrl, "_blank", "noopener,noreferrer");
+      if (!win || win.closed || typeof win.closed === "undefined") {
+        window.location.href = mailtoUrl;
+      }
+    } catch {
+      window.location.href = mailtoUrl;
+    }
+  };
+
+  const getWhatsAppUrl = (roleTitle: string) => {
+    if (roleTitle === "Stock Audit") {
+      return `https://wa.me/919940243827?text=${encodeURIComponent("Hello, I’m interested in the Stock Audit role.")}`;
+    }
+    return `https://wa.me/919940243827?text=${encodeURIComponent(`Hi Mr. Raj, I am interested in applying for the ${roleTitle} internship. Here is my resume:`)}`;
   };
 
   return (
@@ -177,7 +233,8 @@ export default function CareersPage() {
                         {role.duration}
                       </span>
                     </div>
-                    <h3 style={{ fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: "20px", color: "#1a1a2e", marginBottom: "12px" }}>
+                    <h3 style={{ fontFamily: "Sora, sans-serif", fontWeight: 800, fontSize: "20px", color: "#1a1a2e", marginBottom: "12px", display: "flex", alignItems: "center", gap: "10px" }}>
+                      {role.icon && <role.icon size={20} color={role.color} style={{ flexShrink: 0 }} />}
                       {role.title}
                     </h3>
                     <p style={{ fontSize: "14.5px", color: "#4b5563", lineHeight: 1.7, marginBottom: "20px" }}>
@@ -197,15 +254,17 @@ export default function CareersPage() {
                       onClick={() => handleEmailApply(role.title)}
                       className="btn-orchid"
                       style={{ width: "100%", justifyContent: "center", fontSize: "14px" }}
+                      aria-label={`Apply via Email for ${role.title}`}
                     >
                       <Mail size={15} /> Apply via Email
                     </button>
                     <a
-                      href={`https://wa.me/919360044152?text=Hi%20Mr.%20Raj,%20I%20am%20interested%20in%20applying%20for%20the%20${encodeURIComponent(role.title)}%20internship.%20Here%20is%20my%20resume:`}
+                      href={getWhatsAppUrl(role.title)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-gold"
                       style={{ width: "100%", justifyContent: "center", fontSize: "14px", textDecoration: "none" }}
+                      aria-label={`Inquire via WhatsApp for ${role.title}`}
                     >
                       <MessageCircle size={15} /> Inquire via WhatsApp
                     </a>
@@ -300,18 +359,18 @@ export default function CareersPage() {
                 Ready to Join Elite Right Path?
               </h3>
               <p style={{ fontSize: "15px", color: "#6b7280", lineHeight: 1.7, marginBottom: "28px" }}>
-                To apply, please send an email to <strong style={{ color: "#A90DC8" }}>info@eliterightpath.com</strong> containing your resume, preferred internship role, and a brief description of why you want to work with us.
+                To apply, please send an email to <strong style={{ color: "#A90DC8" }}>{CAREERS_EMAIL}</strong> containing your resume, preferred internship role, and a brief description of why you want to work with us.
               </p>
               <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
                 <a
-                  href="mailto:info@eliterightpath.com?subject=Inquiry%20Regarding%20Internship&body=Dear%20Mr.%20Raj%20Paudel,%20I%20would%20like%20to%20apply%20for%20an%20internship%20at%20your%20firm.%20Attached%20is%20my%20resume."
+                  href={`mailto:${CAREERS_EMAIL}?subject=Inquiry%20Regarding%20Careers&body=Dear%20Elite%20Right%20Path,%20I%20would%20like%20to%20apply%20for%20a%20role%20at%20your%20firm.%20Attached%20is%20my%20resume.`}
                   className="btn-orchid"
                   style={{ textDecoration: "none" }}
                 >
                   <Send size={15} /> Send Resume
                 </a>
                 <a
-                  href="https://wa.me/919360044152?text=Hi%20Mr.%20Raj,%20I'm%20interested%20in%20the%20internship%20opportunities%20at%20Elite%20Right%20Path."
+                  href="https://wa.me/919940243827?text=Hi%20Mr.%20Raj,%20I'm%20interested%20in%20the%20internship%20opportunities%20at%20Elite%20Right%20Path."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-outline"

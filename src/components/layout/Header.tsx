@@ -79,23 +79,33 @@ export default function Header() {
         }}
       >
         {/* ── Logo ── */}
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "12px", textDecoration: "none" }}>
+        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "10px", textDecoration: "none" }}>
           <div
             style={{
-              width: "44px",
-              height: "44px",
+              width: "48px",
+              height: "48px",
               borderRadius: "10px",
               overflow: "hidden",
-              border: "1.5px solid rgba(255, 255, 255, 0.15)",
               flexShrink: 0,
+              background: "#FFFFFF",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
             }}
           >
             <Image
-              src="/logo.jpeg"
+              src="/icon.png"
               alt="Elite Right Path Tax Consultancy Logo"
-              width={44}
-              height={44}
-              style={{ objectFit: "cover", width: "100%", height: "100%" }}
+              width={48}
+              height={48}
+              style={{
+                objectFit: "contain",
+                width: "100%",
+                height: "100%",
+                transform: "scale(1.3)",
+                transformOrigin: "center center",
+              }}
             />
           </div>
           <div>

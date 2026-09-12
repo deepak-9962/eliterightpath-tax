@@ -233,7 +233,7 @@ export default function Footer() {
             </h4>
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <a
-                href="tel:+919360044152"
+                href="tel:+919940243827"
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -260,10 +260,10 @@ export default function Footer() {
                 >
                   <Phone size={14} color="#A90DC8" />
                 </div>
-                +91 93600 44152
+                +91 99402 43827
               </a>
               <a
-                href="https://wa.me/919360044152?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
+                href="https://wa.me/919940243827?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20your%20tax%20services"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

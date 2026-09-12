@@ -1331,7 +1331,7 @@ export default function ServicesPage() {
                               Need dedicated assistance with {service.title.toLowerCase()}?
                             </span>
                             <a
-                              href={`https://wa.me/919360044152?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20your%20${encodeURIComponent(
+                              href={`https://wa.me/919940243827?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20your%20${encodeURIComponent(
                                 service.title
                               )}`}
                               target="_blank"
@@ -1528,10 +1528,10 @@ export default function ServicesPage() {
                   className="btn-orchid"
                   style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: "8px" }}
                 >
-                  Talk to Raj <ArrowRight size={15} />
+                  Talk to Us <ArrowRight size={15} />
                 </Link>
                 <a
-                  href="https://wa.me/919360044152?text=Hi%2C%20I%20need%20help%20choosing%20the%20right%20tax%20service"
+                  href="https://wa.me/919940243827?text=Hi%2C%20I%20need%20help%20choosing%20the%20right%20tax%20service"
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -1625,7 +1625,7 @@ export default function ServicesPage() {
             </p>
             <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
               <a
-                href="tel:+919360044152"
+                href="tel:+919940243827"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
