@@ -39,6 +39,18 @@
   --font-inter: 'Inter', sans-serif;
 }
 
+:root {
+  --anim-fade-left: -40px;
+  --anim-fade-right: 40px;
+  --anim-fade-y: 0px;
+}
+
+main {
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100vw;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -723,12 +735,23 @@ h1, h2, h3, h4, h5, h6 {
     padding: 13px 22px !important;
   }
 
+  /* Mobile animation horizontal zeroing */
+  :root {
+    --anim-fade-left: 0px;
+    --anim-fade-right: 0px;
+    --anim-fade-y: 20px;
+  }
+
   /* Contact form padding reduced */
   .contact-form-card {
-    padding: 24px 20px !important;
+    padding: 24px 18px !important;
   }
   .contact-info-card {
-    padding: 24px 20px !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  .contact-info-block {
+    padding: 20px 18px !important;
   }
   .form-row {
     grid-template-columns: 1fr !important;
@@ -791,9 +814,11 @@ h1, h2, h3, h4, h5, h6 {
     height: 50px !important;
   }
 
-  /* Contact form card — full bleed padding */
+  /* Contact grid item wrappers — clean full width */
   .contact-grid > div {
-    padding: 20px 16px !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   /* Footer — reduce padding */
@@ -874,12 +899,14 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (max-width: 900px) {
   .about-story-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 40px;
+    width: 100% !important;
   }
   .founder-detail-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
     gap: 40px;
+    width: 100% !important;
   }
   .founder-detail-grid > div:last-child {
     order: -1;
@@ -908,6 +935,46 @@ h1, h2, h3, h4, h5, h6 {
   }
   .process-connector {
     display: none;
+  }
+}
+
+/* Firm info card mobile responsiveness */
+@media (max-width: 640px) {
+  .firm-info-card {
+    padding: 16px 14px !important;
+  }
+  .firm-info-row {
+    flex-wrap: wrap !important;
+    gap: 6px 10px !important;
+    padding: 10px 0 !important;
+  }
+  .firm-info-label {
+    min-width: auto !important;
+    font-size: 12px !important;
+  }
+  .firm-info-value {
+    font-size: 13px !important;
+    word-break: break-word !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .firm-info-row {
+    display: grid !important;
+    grid-template-columns: 20px 1fr !important;
+    row-gap: 2px !important;
+    align-items: flex-start !important;
+  }
+  .firm-info-label {
+    grid-column: 2 !important;
+    font-size: 11.5px !important;
+    color: #64748B !important;
+  }
+  .firm-info-value {
+    grid-column: 2 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #111827 !important;
   }
 }
 

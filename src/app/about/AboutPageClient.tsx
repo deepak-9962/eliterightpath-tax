@@ -172,7 +172,7 @@ export default function AboutPage() {
       </section>
 
       {/* 2. OUR STORY */}
-      <section style={{ background: "#FAF7FF", padding: "88px 0 96px" }}>
+      <section style={{ background: "#FAF7FF", padding: "88px 0 96px", overflow: "hidden" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 24px" }}>
           <div className="about-story-grid">
             <Animated variant="fadeLeft">
@@ -254,6 +254,7 @@ export default function AboutPage() {
                   Tax and GST regulations can be difficult to navigate. Clients often feel overwhelmed by filing deadlines, notices, and documentation requirements. Elite Right Path exists to take that pressure away — giving clients direct access to a consultant who understands their situation.
                 </p>
                 <div
+                  className="firm-info-card"
                   style={{
                     background: "#FFFFFF",
                     border: "1px solid rgba(124, 58, 237, 0.1)",
@@ -265,6 +266,7 @@ export default function AboutPage() {
                   {firmInfo.map(({ icon: Icon, label, value }, i) => (
                     <div
                       key={label}
+                      className="firm-info-row"
                       style={{
                         display: "flex",
                         alignItems: "center",
@@ -274,8 +276,8 @@ export default function AboutPage() {
                       }}
                     >
                       <Icon size={16} color="#A855F7" style={{ flexShrink: 0 }} />
-                      <span style={{ fontSize: "13px", color: "#64748B", minWidth: "140px" }}>{label}</span>
-                      <span style={{ fontSize: "13px", color: "#111827", fontWeight: 600, fontFamily: "Sora, sans-serif" }}>
+                      <span className="firm-info-label" style={{ fontSize: "13px", color: "#64748B", minWidth: "140px" }}>{label}</span>
+                      <span className="firm-info-value" style={{ fontSize: "13px", color: "#111827", fontWeight: 600, fontFamily: "Sora, sans-serif" }}>
                         {value}
                       </span>
                     </div>

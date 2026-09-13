@@ -125,7 +125,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <Header />
-        <main>{children}</main>
+        <main style={{ overflowX: "clip", width: "100%", maxWidth: "100vw" }}>{children}</main>
         <Footer />
         <WhatsAppFAB />
       </body>

@@ -21,12 +21,12 @@ const variants: Record<AnimVariant, { from: CSSProperties; to: CSSProperties }> 
     to:   { opacity: 1, transform: "translateY(0)" },
   },
   fadeLeft: {
-    from: { opacity: 0, transform: "translateX(-40px)" },
-    to:   { opacity: 1, transform: "translateX(0)" },
+    from: { opacity: 0, transform: "translateX(var(--anim-fade-left, -40px)) translateY(var(--anim-fade-y, 0px))" },
+    to:   { opacity: 1, transform: "translateX(0) translateY(0)" },
   },
   fadeRight: {
-    from: { opacity: 0, transform: "translateX(40px)" },
-    to:   { opacity: 1, transform: "translateX(0)" },
+    from: { opacity: 0, transform: "translateX(var(--anim-fade-right, 40px)) translateY(var(--anim-fade-y, 0px))" },
+    to:   { opacity: 1, transform: "translateX(0) translateY(0)" },
   },
   scaleIn: {
     from: { opacity: 0, transform: "scale(0.88)" },

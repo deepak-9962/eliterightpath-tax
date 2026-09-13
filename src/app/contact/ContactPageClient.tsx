@@ -233,7 +233,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main content */}
-      <section style={{ background: "#F5FEFD", padding: "64px 0" }}>
+      <section style={{ background: "#F5FEFD", padding: "64px 0", overflow: "hidden" }}>
         <div
           style={{
             maxWidth: "1200px",
@@ -583,6 +583,7 @@ export default function ContactPage() {
           <div className="contact-info-card" style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
             {/* Direct contact cards */}
             <div
+              className="contact-info-block"
               style={{
                 background: "white",
                 borderRadius: "20px",
@@ -701,7 +702,7 @@ export default function ContactPage() {
                   href="https://www.google.com/maps?q=13.082695,80.174067"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ display: "flex", gap: "14px", alignItems: "flex-start", textDecoration: "none" }}
+                  style={{ display: "flex", gap: "14px", alignItems: "flex-start", textDecoration: "none", width: "100%" }}
                 >
                   <div
                     style={{
@@ -730,6 +731,7 @@ export default function ContactPage() {
 
             {/* Info tiles */}
             <div
+              className="contact-info-block"
               style={{
                 background: "white",
                 borderRadius: "20px",
@@ -849,12 +851,33 @@ export default function ContactPage() {
 
       <style>{`
         @media (max-width: 1024px) {
-          .contact-grid { grid-template-columns: 1fr !important; }
+          .contact-grid {
+            grid-template-columns: minmax(0, 1fr) !important;
+            gap: 36px !important;
+          }
           .form-row { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 768px) {
-          .contact-form-card { padding: 24px 20px !important; }
-          .contact-info-card { padding: 0 !important; }
+          .contact-grid {
+            padding: 0 16px !important;
+            gap: 28px !important;
+          }
+          .contact-grid > div {
+            padding: 0 !important;
+            width: 100% !important;
+          }
+          .contact-form-card {
+            padding: 24px 18px !important;
+            border-radius: 18px !important;
+          }
+          .contact-info-card {
+            padding: 0 !important;
+            width: 100% !important;
+          }
+          .contact-info-block {
+            padding: 20px 18px !important;
+            border-radius: 18px !important;
+          }
         }
       `}</style>
     </>
