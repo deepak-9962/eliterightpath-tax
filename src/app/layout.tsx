@@ -20,31 +20,37 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://eliterightpath.com"),
   title: {
     default: "Elite Right Path Tax Consultancy | Expert Tax & GST Services",
     template: "%s | Elite Right Path Tax Consultancy",
   },
   description:
     "Expert income tax, GST, accounting, and business registration services in Tamil Nadu. Guided by Mr. Raj Paudel — Guiding you on the right path to financial compliance and growth.",
-  keywords: [
-    "tax consultancy",
-    "GST filing",
-    "income tax return",
-    "ITR filing",
-    "accounting services",
-    "business registration",
-    "tax consultant Tamil Nadu",
-    "GST registration",
-    "Elite Right Path Tax Consultancy",
-  ],
   authors: [{ name: "Elite Right Path Tax Consultancy" }],
   openGraph: {
     type: "website",
     locale: "en_IN",
+    url: "https://eliterightpath.com/",
     siteName: "Elite Right Path Tax Consultancy",
     title: "Elite Right Path Tax Consultancy | Expert Tax & GST Services",
     description:
       "Expert income tax, GST, accounting, and business registration services. Guiding you on the right path to financial compliance and growth.",
+    images: [
+      {
+        url: "/logo.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Elite Right Path Tax Consultancy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Elite Right Path Tax Consultancy | Expert Tax & GST Services",
+    description:
+      "Expert income tax, GST, accounting, and business registration services in Tamil Nadu.",
+    images: ["/logo.jpeg"],
   },
 };
 
@@ -61,28 +67,58 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": ["AccountingService", "LocalBusiness"],
-              name: "Elite Right Path Tax Consultancy",
-              description:
-                "Expert income tax, GST, accounting and business registration services guided by Mr. Raj Paudel",
-              url: "https://eliterightpath.com",
-              telephone: "+919940243827",
-              address: {
-                "@type": "PostalAddress",
-                addressCountry: "IN",
-                addressRegion: "Tamil Nadu",
-              },
-              vatID: "33GAGPR3616R1Z2",
-              founder: {
-                "@type": "Person",
-                name: "Raj Paudel",
-              },
-              openingHours: "Mo-Sa 10:00-21:00",
-              priceRange: "₹₹",
-              serviceArea: {
-                "@type": "State",
-                name: "Tamil Nadu",
-              },
+              "@graph": [
+                {
+                  "@type": ["AccountingService", "LocalBusiness"],
+                  "@id": "https://eliterightpath.com/#organization",
+                  name: "Elite Right Path Tax Consultancy",
+                  description:
+                    "Expert income tax, GST, accounting and business registration services guided by Mr. Raj Paudel",
+                  url: "https://eliterightpath.com/",
+                  telephone: "+919940243827",
+                  email: "eliterightpathtax@gmail.com",
+                  vatID: "33GAGPR3616R1Z2",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Mogappair",
+                    addressRegion: "Tamil Nadu",
+                    addressCountry: "IN",
+                  },
+                  founder: {
+                    "@type": "Person",
+                    name: "Raj Paudel",
+                    jobTitle: "Proprietor & Tax Consultant",
+                  },
+                  openingHoursSpecification: [
+                    {
+                      "@type": "OpeningHoursSpecification",
+                      dayOfWeek: [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                      ],
+                      opens: "10:00",
+                      closes: "21:00",
+                    },
+                  ],
+                  serviceArea: {
+                    "@type": "State",
+                    name: "Tamil Nadu",
+                  },
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://eliterightpath.com/#website",
+                  url: "https://eliterightpath.com/",
+                  name: "Elite Right Path Tax Consultancy",
+                  publisher: {
+                    "@id": "https://eliterightpath.com/#organization",
+                  },
+                },
+              ],
             }),
           }}
         />

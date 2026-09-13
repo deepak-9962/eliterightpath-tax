@@ -5,14 +5,14 @@ import Image from "next/image";
 import { Phone, MessageCircle, MapPin, Clock, Mail, CheckCircle } from "lucide-react";
 
 const serviceLinks = [
-  "Income Tax Services",
-  "GST Services",
-  "Business Registration",
-  "Book Keeping",
-  "Accounts Maintenance",
-  "Compliance & Legal",
-  "Audit Support",
-  "Financial Advisory",
+  { label: "Income Tax Services", href: "/services#income-tax" },
+  { label: "GST Services", href: "/services#gst" },
+  { label: "Business Registration", href: "/services#business-registration" },
+  { label: "Book Keeping", href: "/services#bookkeeping" },
+  { label: "Accounts Maintenance", href: "/services#accounts-maintenance" },
+  { label: "Compliance & Legal", href: "/services#compliance" },
+  { label: "Audit Support", href: "/services#audit" },
+  { label: "Financial Advisory", href: "/services#financial-advisory" },
 ];
 
 const quickLinks = [
@@ -182,9 +182,9 @@ export default function Footer() {
             </h4>
             <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "10px" }}>
               {serviceLinks.map((service) => (
-                <li key={service}>
+                <li key={service.label}>
                   <Link
-                    href="/services"
+                    href={service.href}
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -198,7 +198,7 @@ export default function Footer() {
                     onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
                   >
                     <span style={{ width: "6px", height: "6px", borderRadius: "50%", background: "#FDB515", flexShrink: 0 }} />
-                    {service}
+                    {service.label}
                   </Link>
                 </li>
               ))}

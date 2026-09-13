@@ -176,7 +176,7 @@ export default function HeroProfileVisual() {
           >
             <Image
               src="/raj-paudel.jpeg"
-              alt="Mr. Raj Paudel — Tax Consultant, Elite Right Path"
+              alt="Mr. Raj Paudel — Proprietor & Tax Consultant, Elite Right Path Tax Consultancy"
               fill
               priority
               style={{ objectFit: "cover", objectPosition: "center 15%" }}
