@@ -1137,7 +1137,7 @@ export default function HomePage() {
                     }}
                   >
                     <Image
-                      src="/raj-paudel.jpeg"
+                      src="/raj.jpeg"
                       alt="Raj Paudel — Proprietor & Tax Consultant, Elite Right Path"
                       fill
                       style={{

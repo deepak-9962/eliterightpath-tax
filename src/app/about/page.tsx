@@ -196,7 +196,7 @@ export default function AboutPage() {
                     }}
                   >
                     <Image
-                      src="/raj-paudel.jpeg"
+                      src="/raj.jpeg"
                       alt="Raj Paudel — Proprietor & Tax Consultant, Elite Right Path"
                       fill
                       style={{ objectFit: "cover", objectPosition: "top center" }}
@@ -431,7 +431,7 @@ export default function AboutPage() {
                     }}
                   >
                     <Image
-                      src="/raj-paudel.jpeg"
+                      src="/raj.jpeg"
                       alt="Raj Paudel — Proprietor & Tax Consultant, Elite Right Path"
                       fill
                       style={{ objectFit: "cover", objectPosition: "top center" }}
