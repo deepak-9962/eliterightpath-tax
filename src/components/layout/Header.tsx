@@ -94,19 +94,18 @@ export default function Header() {
               position: "relative",
             }}
           >
-            <Image
-              src="/icon.png"
-              alt="Elite Right Path Tax Consultancy Logo"
-              width={48}
-              height={48}
-              style={{
-                objectFit: "contain",
-                width: "100%",
-                height: "100%",
-                transform: "scale(1.3)",
-                transformOrigin: "center center",
-              }}
-            />
+              <Image
+                src="/icon.png"
+                alt="Elite Right Path Tax Consultancy Logo"
+                width={48}
+                height={48}
+                style={{
+                  objectFit: "contain",
+                  width: "100%",
+                  height: "100%",
+                  padding: "4px",
+                }}
+              />
           </div>
           <div>
             <div
